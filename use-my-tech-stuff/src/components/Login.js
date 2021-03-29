@@ -6,18 +6,18 @@ import {
 	BrowserRouter,
 } from 'react-router-dom';
 export default function LoginForm() {
-	const initialValue = { email: '', password: '' };
+	const initialValue = { email: '', username:'', password: '' };
 	const userInfo = [];
 	const [Info, setInfo] = useState(userInfo);
 	const [UserValue, setValue] = useState(initialValue);
 	const change = (name, value) => {};
 	return (
 		<div>
-			<form>
+			<form onSubmit={''}>
 				<input
 					type='email'
 					onChange={change}
-					className='loginEmail'
+					name='email'
 					value={UserValue.username}
 					placeholder='Your-Email@example.com'
 				/>
@@ -31,12 +31,8 @@ export default function LoginForm() {
 					placeholder='password...'
 				/>
 			</form>
-			<button onClick={change}>Log In</button>
-			<BrowserRouter>
-				<Link>
-					<button>Register</button>
-				</Link>
-			</BrowserRouter>
+			<button>Log In</button>
+		
 		</div>
 	);
 }
