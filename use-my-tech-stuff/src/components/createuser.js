@@ -8,11 +8,11 @@ const intialFormValues= {
 }
 
 const initialUsers=[]
-export default function Create() {
+export default function CreateUser() {
     const [userInfo, setUserInfo] = useState(initialUsers);
     const [formValues, setFormValues] = useState(intialFormValues);
 
-    const Onsubmit = (evt) => {
+    const onSubmit = (evt) => {
         evt.preventDefault();
 
     }
@@ -24,7 +24,7 @@ export default function Create() {
 
     return(
 
-    <form onSubmit={Onsubmit}>
+    <form onSubmit={onSubmit}>
         <label>Username
             <input 
             type= "text"

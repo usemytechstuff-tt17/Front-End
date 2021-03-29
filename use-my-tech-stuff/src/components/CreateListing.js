@@ -12,7 +12,7 @@ export default function Create() {
     const [itemInfo, setItemInfo] = useState(initialItemInfo);
     const [formValues, setFormValues] = useState(intialFormValues);
 
-    const Onsubmit = (evt) => {
+    const onSubmit = (evt) => {
         evt.preventDefault();
 
     }
