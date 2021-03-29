@@ -8,7 +8,7 @@ const intialFormValues= {
 }
 
 const initialUsers=[]
-export default function Create() {
+export default function CreateUser() {
     const [userInfo, setUserInfo] = useState(initialUsers);
     const [formValues, setFormValues] = useState(intialFormValues);
 
