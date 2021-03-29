@@ -11,7 +11,7 @@ ReactDOM.render(
 		<Switch>
 			<Route path='/login' /* component={} */ />
 			<Route path='/register' /* component={Createuser} */ />
-			<PrivateRoute path='' /* component={} */ />
+
 			<Route exact path='/' component={App} />
 		</Switch>
 	</Router>,
