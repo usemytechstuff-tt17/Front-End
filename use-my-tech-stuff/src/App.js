@@ -1,10 +1,11 @@
-import logo from './logo.svg';
 import './App.css';
-import  LoginForm from './Login'
+
 function App() {
-  return (
-<LoginForm/>
-  );
+	return (
+		<>
+			<h1>Use My Tech Stuff</h1>
+		</>
+	);
 }
 
 export default App;
