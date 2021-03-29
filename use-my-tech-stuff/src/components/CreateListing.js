@@ -3,6 +3,7 @@ import React, {useState} from 'react'
 
 const intialFormValues= {
     itemname: '',
+    category: '',
     price: '',
     description: '',
 }
@@ -12,29 +13,29 @@ export default function Create() {
     const [itemInfo, setItemInfo] = useState(initialItemInfo);
     const [formValues, setFormValues] = useState(intialFormValues);
 
-    const Onsubmit = (evt) => {
+    const onSubmit = (evt) => {
         evt.preventDefault();
 
     }
 
-    const OnChange = (evt) => {
+    const onChange = (evt) => {
         const {name, value} = evt.target
         setFormValues({...formValues, [name]:value});
     }
 
     return(
 
-    <form onSubmit={Onsubmit}>
+    <form onSubmit={onSubmit}>
         <label>Item Name
             <input 
             type= "text"
-            onChange={OnChange}
+            onChange={onChange}
             value= {formValues.itemname}
             name= "itemname"
             />
         </label>
           <label>Category
-            <select name="category" value={formValues.category} onChange={Onchange}>
+            <select name="category" value={formValues.category} onChange={onChange}>
                 <option value="">--Select Category--</option>
                 <option value="photography">Film & Photography</option>
                 <option value="television">TV's</option>
@@ -45,7 +46,7 @@ export default function Create() {
         <label>Price
             <input 
             type= "text"
-            onChange={OnChange}
+            onChange={onChange}
             value= {formValues.price}
             name= "price"
             />
@@ -53,7 +54,7 @@ export default function Create() {
         <label>Description
             <input 
             type= "password"
-            onChange={OnChange}
+            onChange={onChange}
             value= {formValues.description}
             name= "description"
             />

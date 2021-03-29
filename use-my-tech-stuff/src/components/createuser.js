@@ -12,23 +12,23 @@ export default function Create() {
     const [userInfo, setUserInfo] = useState(initialUsers);
     const [formValues, setFormValues] = useState(intialFormValues);
 
-    const Onsubmit = (evt) => {
+    const onSubmit = (evt) => {
         evt.preventDefault();
 
     }
 
-    const OnChange = (evt) => {
+    const onChange = (evt) => {
         const {name, value} = evt.target
         setFormValues({...formValues, [name]:value});
     }
 
     return(
 
-    <form onSubmit={Onsubmit}>
+    <form onSubmit={onSubmit}>
         <label>Username
             <input 
             type= "text"
-            onChange={OnChange}
+            onChange={onChange}
             value= {formValues.username}
             name= "username"
             />
@@ -36,7 +36,7 @@ export default function Create() {
         <label>Email
             <input 
             type= "text"
-            onChange={OnChange}
+            onChange={onChange}
             value= {formValues.email}
             name= "email"
             />
@@ -44,7 +44,7 @@ export default function Create() {
         <label>Password
             <input 
             type= "password"
-            onChange={OnChange}
+            onChange={onChange}
             value= {formValues.password}
             name= "password"
             />
