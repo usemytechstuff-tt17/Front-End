@@ -1,6 +1,5 @@
-import axios from 'axios';
-import React,{ useState, useEffect }  from 'react'
-
+import React,{ useState, useEffect }  from 'react';
+import axiosWithAuth from '../utils/axiosWithAuth';
 
 
 const initialData = {
@@ -9,19 +8,20 @@ const initialData = {
     details: 'My one of a kind kodak disposable camera',
 }
 
-export default function ListingCard() {
+const ListingCard =() => {
 
     const [data, setData] = useState(initialData);
-
+    
     useEffect(() => {
-        axios.get('our-api.com')
-        .then( response => {
-            console.log(response)
+        axiosWithAuth().get('/items')
+        .then( res => {
+            console.log(res)
+            setData(res.data)
         })
         .catch((err) => {
-            console.log(err)
+            console.log(err.response)
         })
-    })
+    },[])
 
     return(
         <div>
@@ -32,3 +32,5 @@ export default function ListingCard() {
         </div>
     )
 }
+
+export default ListingCard
