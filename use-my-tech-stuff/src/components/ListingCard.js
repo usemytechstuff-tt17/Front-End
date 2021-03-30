@@ -1,5 +1,5 @@
 import React,{ useState, useEffect }  from 'react';
-// import axiosWithAuth from '../utils/axiosWithAuth';
+import axiosWithAuth from '../utils/axiosWithAuth';
 
 
 const initialData = [{
@@ -10,18 +10,17 @@ const initialData = [{
 
 const ListingCard =(props) => {
 
-    // const [data, setData] = useState(initialData);
+    const [data, setData] = useState(initialData);
     
-    // useEffect(() => {
-    //     axiosWithAuth().get('/items')
-    //     .then( res => {
-    //         console.log(res)
-    //         setData(res.data)
-    //     })
-    //     .catch((err) => {
-    //         console.log(err.response)
-    //     })
-    // },[])
+        axiosWithAuth().get('/items')
+        .then( res => {
+            console.log(res)
+            setData(res.data)
+        })
+        .catch((err) => {
+            console.log(err.response)
+        })
+  
 
     return(
         <div>
