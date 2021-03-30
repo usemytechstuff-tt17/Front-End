@@ -11,7 +11,7 @@ import './App.css';
 import axios from 'axios';
 
 function App() {
-	const [tech, setTech] = useState();
+	const [tech, setTech] = useState([]);
 
 	useEffect(() => {
 		axios
