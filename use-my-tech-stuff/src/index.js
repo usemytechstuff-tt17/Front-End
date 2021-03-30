@@ -6,7 +6,8 @@ import App from './App';
 import { BrowserRouter as Router, Switch, Route } from 'react-router-dom';
 import PrivateRoute from './utils/PrivateRoute';
 import LoginForm from './components/Login';
-import Create from './components/Createuser';
+import Create from './components/CreateUser';
+
 
 ReactDOM.render(
 	<Router>
