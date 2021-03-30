@@ -3,11 +3,9 @@ import { Link } from 'react-router-dom';
 
 import Logo from '../theme/UseMyTechStuffLogo.png'
 
-
-
+const Nav = () => {
 
 return(
-
     <div className='navbar'>
         <img src={Logo} alt='Use My Tech Stuff Logo' />
         <p>Connecting people in need to people with Greed!</p>
@@ -26,6 +24,7 @@ return(
             </ul>
         </nav>
     </div>
+    )
+}
 
-
-)
+export default Nav
