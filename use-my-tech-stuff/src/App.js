@@ -11,7 +11,6 @@ import './App.css';
 
 function App() {
 	const [tech, setTech] = useState();
-	const [user, setUser] = useState();
 
 	useEffect(() => {
 		// Get tech
