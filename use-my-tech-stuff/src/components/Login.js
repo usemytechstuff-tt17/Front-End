@@ -2,7 +2,7 @@ import React, { useState } from 'react';
 import {Link} from 'react-router-dom';
 
 export default function LoginForm() {
-	const initialValue = { email: '', password: '' };
+	const initialValue = { email: '', username:'', password: '' };
 	const userInfo = [];
 	const [info, setInfo] = useState(userInfo);
 	const [userValue, setUserValue] = useState(initialValue);
@@ -13,7 +13,7 @@ export default function LoginForm() {
 
 	return (
 		<div>
-			<form>
+			<form onSubmit={''}>
 				<input
 					type='email'
 					onChange={change}
@@ -33,11 +33,9 @@ export default function LoginForm() {
 				/>
 			</form>
 			<button onClick={change}>Log In</button>
-			
 				<Link>
 					<button>Register</button>
 				</Link>
-			
 		</div>
 	);
 }
