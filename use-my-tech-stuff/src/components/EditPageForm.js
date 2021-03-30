@@ -2,11 +2,13 @@ import React from 'react';
 import axios from 'axios';
 import { useParams, useHistory } from 'react-router-dom';
 import axiosWithAuth from '../utils/axiosWithAuth';
+import { TechContext } from '../contexts/techContext';
 
 
 const EditPageForm = () => {
     const { push } = useHistory();
     const { id } = useParams();
+    const { tech, setTech } = useContext(TechContext);
 
     initialState= {
         itemName: '',
@@ -38,7 +40,8 @@ const EditPageForm = () => {
         .then(res => {
             console.log(res)
             // Need to setState with context state
-            push(`/home`)
+            setTech(res.data)
+            push(`/ownerpage`)
         })
         .catch(err => {
             console.log(err)
@@ -54,9 +57,10 @@ const EditPageForm = () => {
 
     return(
     <div>
-            Edit Page Form
-
         <form onSubmit={handleSubmit}>
+            <div className='edit-header'>
+                <h4>Editing: <strong>{editItem.item_name}</strong></h4>
+            </div>
             <label>Item Name
                 <input 
                 type= "text"
@@ -66,7 +70,7 @@ const EditPageForm = () => {
                 />
             </label>
             <label>Category
-                <select name="category" value={formValues.category} onChange={onChange}>
+                <select name="category" value={formValues.category} onChange={changeHandeler}>
                     <option value="">--Select Category--</option>
                     <option value="photography">Film & Photography</option>
                     <option value="television">TV's</option>
@@ -77,7 +81,7 @@ const EditPageForm = () => {
             <label>Price
                 <input 
                 type= "text"
-                onChange={onChange}
+                onChange={changeHandeler}
                 value= {formValues.price}
                 name= "price"
                 />
@@ -85,13 +89,13 @@ const EditPageForm = () => {
             <label>Description
                 <input 
                 type= "password"
-                onChange={onChange}
+                onChange={changeHandeler}
                 value= {formValues.description}
                 name= "description"
                 />
             </label>
             <button>Save</button>
-            <button>Cancel</button>
+            <Link to={'/ownerpage'} ><button>Cancel</button></Link>
         </form>
     </div>
     );
