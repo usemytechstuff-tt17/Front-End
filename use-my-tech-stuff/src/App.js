@@ -8,13 +8,20 @@ import LoginForm from './components/Login';
 import Nav from './components/Nav';
 
 import './App.css';
+import axios from 'axios';
 
 function App() {
 	const [tech, setTech] = useState();
 
 	useEffect(() => {
-		// Get tech
-		// setTech
+		axios
+			.get('https://usemytechstuff.herokuapp.com/api/items')
+			.then((res) => {
+				setTech(res.data);
+			})
+			.catch((err) => {
+				console.log(err);
+			});
 	}, []);
 
 	return (
