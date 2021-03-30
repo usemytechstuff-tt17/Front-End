@@ -1,7 +1,10 @@
 import React, {useState} from 'react'
+import TextField from '@material-ui/core/TextField';
+import Select from '@material-ui/core/Select';
+import MenuItem from '@material-ui/core/MenuItem';
+import Button from '@material-ui/core/Button'
 
-
-const intialFormValues= {
+const initialFormValues= {
     itemname: '',
     category: '',
     price: '',
@@ -9,9 +12,9 @@ const intialFormValues= {
 }
 
 const initialItemInfo=[]
-export default function Create() {
+export default function CreateListing() {
     const [itemInfo, setItemInfo] = useState(initialItemInfo);
-    const [formValues, setFormValues] = useState(intialFormValues);
+    const [formValues, setFormValues] = useState(initialFormValues);
 
     const onSubmit = (evt) => {
         evt.preventDefault();
@@ -27,39 +30,50 @@ export default function Create() {
 
     <form onSubmit={onSubmit}>
         <label>Item Name
-            <input 
-            type= "text"
+            <TextField 
+            label= "Item Name"
             onChange={onChange}
             value= {formValues.itemname}
             name= "itemname"
+            variant="outlined"
+            placeholder="Item Name"
             />
         </label>
-          <label>Category
-            <select name="category" value={formValues.category} onChange={onChange}>
-                <option value="">--Select Category--</option>
-                <option value="photography">Film & Photography</option>
-                <option value="television">TV's</option>
-                <option value="electronics">Electronics</option>
-                <option value="other">Other</option>
-            </select>
+        <br />
+        <label>Category
+            <Select name="category" value={formValues.category} onChange={onChange}>
+                <MenuItem value="">--Select Category--</MenuItem>
+                <MenuItem value="photography">Film & Photography</MenuItem>
+                <MenuItem value="television">TV's</MenuItem>
+                <MenuItem value="electronics">Electronics</MenuItem>
+                <MenuItem value="other">Other</MenuItem>
+            </Select>
         </label>
+        <br />
         <label>Price
-            <input 
-            type= "text"
+            <TextField
+            label= "Price"
             onChange={onChange}
             value= {formValues.price}
             name= "price"
+            variant="outlined"
+            placeholder="Price"
             />
         </label>
+        <br />
         <label>Description
-            <input 
-            type= "password"
+            <TextField
+            label="Description"
             onChange={onChange}
             value= {formValues.description}
             name= "description"
+            variant="outlined"
+            placeholder="Description"
+            multiline rows={4}
             />
         </label>
-        <button>Submit</button>
+        <br />
+        <Button variant= "contained">Submit</Button>
     </form>
     )
 

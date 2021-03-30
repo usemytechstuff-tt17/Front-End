@@ -1,16 +1,17 @@
 import { useState, useEffect } from 'react';
 import { Route, Switch } from 'react-router-dom';
 import { TechContext } from './contexts/techContext';
+import { UserContext } from './contexts/userContext';
 
 import Create from './components/createuser';
 import Home from './components/Home';
 import LoginForm from './components/Login';
 import Nav from './components/Nav';
+
 import CreateListing from './components/CreateListing';
 
 import './App.css';
 import axios from 'axios';
-import { UserContext } from './contexts/userContext';
 
 function App() {
 	const [tech, setTech] = useState([]);
