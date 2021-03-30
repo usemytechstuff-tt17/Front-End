@@ -7,7 +7,7 @@ import Create from './components/createuser';
 import Home from './components/Home';
 import LoginForm from './components/Login';
 import Nav from './components/Nav';
-import OwnerPage from './components/OwnerPage'
+import OwnerPage from './components/OwnerPage';
 
 import CreateListing from './components/CreateListing';
 
@@ -48,7 +48,7 @@ function App() {
 
 	return (
 		<div className='app'>
-			<TechContext.Provider value={{ tech }}>
+			<TechContext.Provider value={{ tech, setTech }}>
 				<UserContext.Provider value={{ isLoggedIn }}>
 					<Nav />
 					<h1>Use My Tech Stuff</h1>
