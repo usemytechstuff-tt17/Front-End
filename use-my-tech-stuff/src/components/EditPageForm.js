@@ -1,7 +1,7 @@
-
 import React from 'react';
 import axios from 'axios';
 import { useParams, useHistory } from 'react-router-dom';
+import axiosWithAuth from '../utils/axiosWithAuth';
 
 
 const EditPageForm = () => {
@@ -19,7 +19,8 @@ const EditPageForm = () => {
 
     // Populates the Edit Form fields with the item with id matching
     useEffect(() => {
-        axios.get(`https://usemytechstuff.herokuapp.com/api/items/${id}`)
+        axiosWithAuth()
+        .get(`https://usemytechstuff.herokuapp.com/api/items/${id}`)
         .then(res => {
             console.log(res)
             setEditItem(res.data)
@@ -32,7 +33,8 @@ const EditPageForm = () => {
     // Updates both state and the server with the edits
     const handleSubmit = e => {
         e.preventDefault();
-        axios.put(`https://usemytechstuff.herokuapp.com/api/items/${id}`, editItem)
+        axiosWithAuth()
+        .put(`https://usemytechstuff.herokuapp.com/api/items/${id}`, editItem)
         .then(res => {
             console.log(res)
             // Need to setState with context state

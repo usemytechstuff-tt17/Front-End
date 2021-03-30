@@ -1,38 +1,40 @@
 import axios from 'axios';
 import React, { useEffect, useState } from 'react';
 import { useParams } from 'react-router-dom';
+import axiosWithAuth from '../utils/axiosWithAuth'
 
 import Card from './Card';
 
 const initialUserData = [];
 
-export default OwnerPage = () => {
-    const { id } = useParams;
+ const OwnerPage = () => {
+    const { id } = useParams();
 
     const [userData, setUserData] = useState(initialUserData);
 
     useEffect(() => {
-        axios.get(`https://usemytechstuff.herokuapp.com/api/users/${id}`)
+        axiosWithAuth()
+        .get(`https://usemytechstuff.herokuapp.com/api/users/2/items`)
         .then(res => {
-            console.log(res.data)
+            console.log('OwnerPage: ',res.data)
             setUserData(res.data)
         })
         .catch(err => {
-            console.log(err)
+            console.log('Owner Page :', err)
         })
     }, []);
 
     return(
     <div>
-        <div className='ownerHeader'>
-            {/* <h1>Welcome {userData.userName}</h1> */}
-        </div>
         
         {
-            userData.items.map( listing => {
-            <CreateOwnerCard props={listing}  />   
-        }) 
+            userData.map( listing => {
+            return <Card card={listing}  />   
+            }) 
         }
+        user page
     </div>    
     )
 }
+
+export default OwnerPage

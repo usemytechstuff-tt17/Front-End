@@ -7,6 +7,7 @@ import Create from './components/createuser';
 import Home from './components/Home';
 import LoginForm from './components/Login';
 import Nav from './components/Nav';
+import OwnerPage from './components/OwnerPage'
 
 import CreateListing from './components/CreateListing';
 
@@ -52,6 +53,7 @@ function App() {
 					<Nav />
 					<h1>Use My Tech Stuff</h1>
 					<Switch>
+						<PrivateRoute exact path='/ownerpage' component={OwnerPage} />
 						<Route path='/createlisting' component={CreateListing} />
 						<Route path='/login' component={LoginForm} />
 						<Route path='/register' component={Create} />
