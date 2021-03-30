@@ -17,8 +17,9 @@ export default function LoginForm() {
 				<input
 					type='email'
 					onChange={change}
-					value={userValue.username}
-					placeholder='Your-Email@example.com'
+					value={userValue.userName}
+					placeHolder='Your-Email@example.com'
+					name="email"
 				/>
 			</form>
 			<form>
@@ -26,7 +27,8 @@ export default function LoginForm() {
 					type='password'
 					value={userValue.password}
 					onChange={change}
-					placeholder='password...'
+					placeHolder='password...'
+					name="password"
 					
 				/>
 			</form>
