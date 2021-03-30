@@ -14,7 +14,10 @@ return(
         <nav>
             <ul>
                 <li>
-                    <Link to='/protected'>Your Items</Link>
+                    <Link to='/home' >Home</Link>
+                </li>
+                <li>
+                    <Link to='/ownerpage'>Your Items</Link>
                 </li>
                 <li>
                     <Link to='/createListing' />
@@ -22,7 +25,6 @@ return(
                 <li>
                     <Link to='/register'>Register</Link>
                 </li>
-                /
                 <li>
                     <Link to='/login'>Login</Link>
                 </li>
