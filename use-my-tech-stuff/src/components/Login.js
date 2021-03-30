@@ -39,7 +39,7 @@ export default function LoginForm() {
 				</label>
 			</form>
 			<button onClick={change}>Log In</button>
-				<Link>
+				<Link to="/register">
 					<button>Register</button>
 				</Link>
 		</div>
