@@ -12,6 +12,7 @@ import CreateListing from './components/CreateListing';
 
 import './App.css';
 import axios from 'axios';
+import PrivateRoute from './utils/PrivateRoute';
 
 function App() {
 	const [tech, setTech] = useState([]);
