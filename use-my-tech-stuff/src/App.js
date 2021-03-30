@@ -1,4 +1,4 @@
-import { useState } from 'react';
+import { useState, useEffect } from 'react';
 import { Route, Switch } from 'react-router-dom';
 import { TechContext } from './contexts/techContext';
 
@@ -11,10 +11,16 @@ import './App.css';
 
 function App() {
 	const [tech, setTech] = useState();
+	const [user, setUser] = useState();
+
+	useEffect(() => {
+		// Get tech
+		// setTech
+	}, []);
 
 	return (
 		<div className='app'>
-			<TechContext.Provider value={{}}>
+			<TechContext.Provider value={{ tech }}>
 				<Nav />
 				<h1>Use My Tech Stuff</h1>
 				<Switch>
