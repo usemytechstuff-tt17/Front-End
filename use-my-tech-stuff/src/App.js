@@ -6,6 +6,7 @@ import Create from './components/createuser';
 import Home from './components/Home';
 import LoginForm from './components/Login';
 import Nav from './components/Nav';
+import CreateListing from './components/CreateListing'
 
 import './App.css';
 import axios from 'axios';
@@ -30,6 +31,7 @@ function App() {
 				<Nav />
 				<h1>Use My Tech Stuff</h1>
 				<Switch>
+					<Route path='/createlisting' component={CreateListing} />
 					<Route path='/login' component={LoginForm} />
 					<Route path='/register' component={Create} />
 					<Route path='/' component={Home} />
