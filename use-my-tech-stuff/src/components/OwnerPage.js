@@ -1,5 +1,4 @@
 import React, { useEffect, useState, useContext } from 'react';
-import axios from 'axios';
 import { useParams } from 'react-router-dom';
 import axiosWithAuth from '../utils/axiosWithAuth';
 import { TechContext } from '../contexts/techContext';
@@ -10,7 +9,7 @@ const initialUserData = [];
 
 const OwnerPage = () => {
 	const { id } = useParams();
-	const { setTech } = useContext(TechContext);
+	const { tech, setTech } = useContext(TechContext);
 
 	const [userData, setUserData] = useState(initialUserData);
 
