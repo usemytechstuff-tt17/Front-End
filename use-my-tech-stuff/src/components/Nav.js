@@ -1,6 +1,8 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
 
+import PrivateRoute from '../utils/PrivateRoute'
+
 import Logo from '../theme/UseMyTechStuffLogo.png'
 
 const Nav = () => {
@@ -11,6 +13,9 @@ return(
         <p>Connecting people in need to people with Greed!</p>
         <nav>
             <ul>
+                <li>
+                    <Link to='/protected'>Your Items</Link>
+                </li>
                 <li>
                     <Link to='/createListing' />
                 </li>
@@ -27,4 +32,4 @@ return(
     )
 }
 
-export default Nav
+export default Nav;
