@@ -8,16 +8,16 @@ import PrivateRoute from './utils/PrivateRoute';
 import LoginForm from './components/Login';
 
 import Create from './components/createuser';
-import CreateUserCard from './components/CreateUserCard';
+import Home from './components/Home';
 
 
 ReactDOM.render(
 	<Router>
+		<App/>
 		<Switch>
 			<Route path='/login' component={LoginForm} />
 			<Route path='/register' component={Create} />
-			<Route path='/listing' component={CreateUserCard}/>
-			<Route exact path='/' component={App} />
+			<Route path='/' component={Home}/>
 		</Switch>
 	</Router>,
 	document.getElementById('root')
