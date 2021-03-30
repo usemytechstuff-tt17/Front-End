@@ -9,6 +9,7 @@ import Nav from './components/Nav';
 
 import './App.css';
 import axios from 'axios';
+import PrivateRoute from './utils/PrivateRoute';
 
 function App() {
 	const [tech, setTech] = useState([]);

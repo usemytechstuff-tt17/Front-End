@@ -34,8 +34,8 @@ const CreateOwnerCard =(props) => {
         <p>img?</p>
         <p>${props.price}/per day</p>
         <p>Details:{props.details}</p>
-        <button onClick={editHandler}>edit</button>
-        <button onClick={deleteHandler}>delete</button> 
+        <button onClick={editHandler}>Edit</button>
+        <button onClick={deleteHandler}>Delete</button> 
         </div>
     )
 }
