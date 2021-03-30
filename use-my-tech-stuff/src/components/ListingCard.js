@@ -2,17 +2,16 @@ import React,{ useState, useEffect }  from 'react';
 import axiosWithAuth from '../utils/axiosWithAuth';
 
 
-const initialData = {
+const initialData = [{
     name: 'Uber cool camera',
     price: 10000,
     details: 'My one of a kind kodak disposable camera',
-}
+}]
 
-const ListingCard =() => {
+const ListingCard =(props) => {
 
     const [data, setData] = useState(initialData);
     
-    useEffect(() => {
         axiosWithAuth().get('/items')
         .then( res => {
             console.log(res)
@@ -21,14 +20,14 @@ const ListingCard =() => {
         .catch((err) => {
             console.log(err.response)
         })
-    },[])
+  
 
     return(
         <div>
-        <h2>{data.name}</h2>
+        <h2>{props.name}</h2>
         <p>img?</p>
-        <p>${data.price}/per day</p>
-        <p>Details: {data.details}</p>
+        <p>${props.price}/per day</p>
+        <p>Details:{props.details}</p>
         </div>
     )
 }
