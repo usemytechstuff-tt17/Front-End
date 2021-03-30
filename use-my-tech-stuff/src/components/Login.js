@@ -1,38 +1,41 @@
 import React, { useState } from 'react';
-import {
-	BrowserRouter as Router,
-	Route,
-	Link,
-	BrowserRouter,
-} from 'react-router-dom';
+import {Link} from 'react-router-dom';
+
 export default function LoginForm() {
 	const initialValue = { email: '', username:'', password: '' };
 	const userInfo = [];
-	const [Info, setInfo] = useState(userInfo);
-	const [UserValue, setValue] = useState(initialValue);
-	const change = (name, value) => {};
+	const [info, setInfo] = useState(userInfo);
+	const [userValue, setUserValue] = useState(initialValue);
+	const change = (evt) => {
+		const{name, value}=evt.target
+		setUserValue({...userValue, [name]:value})
+	};
+
 	return (
 		<div>
 			<form onSubmit={''}>
 				<input
 					type='email'
 					onChange={change}
-					name='email'
-					value={UserValue.username}
-					placeholder='Your-Email@example.com'
+					value={userValue.userName}
+					placeHolder='Your-Email@example.com'
+					name="email"
 				/>
 			</form>
 			<form>
 				<input
 					type='password'
-					value={UserValue.password}
+					value={userValue.password}
 					onChange={change}
-					className='loginPassword'
-					placeholder='password...'
+					placeHolder='password...'
+					name="password"
+					
 				/>
 			</form>
-			<button>Log In</button>
-		
+			<button onClick={change}>Log In</button>
+				<Link>
+					<button>Register</button>
+				</Link>
 		</div>
 	);
 }
