@@ -94,8 +94,10 @@ const EditPageForm = () => {
                 name= "description"
                 />
             </label>
-            <button>Save</button>
-            <Link to={'/ownerpage'} ><button>Cancel</button></Link>
+            <div className='buttonContainer'>
+                <button>Save</button>
+                <Link to={'/ownerpage'} ><button>Cancel</button></Link>
+            </div>
         </form>
     </div>
     );
