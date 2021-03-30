@@ -1,16 +1,17 @@
 import React, {useState} from 'react'
 
 
-const intialFormValues= {
+const initialFormValues= {
     username: '',
     email: '',
     password: '',
+    owner:false
 }
 
 const initialUsers=[]
 export default function CreateUser() {
     const [userInfo, setUserInfo] = useState(initialUsers);
-    const [formValues, setFormValues] = useState(intialFormValues);
+    const [formValues, setFormValues] = useState(initialFormValues);
 
     const onSubmit = (evt) => {
         evt.preventDefault();
