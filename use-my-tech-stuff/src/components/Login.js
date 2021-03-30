@@ -10,27 +10,33 @@ export default function LoginForm() {
 		const{name, value}=evt.target
 		setUserValue({...userValue, [name]:value})
 	};
+	const onSubmit = (evt) => {
+        evt.preventDefault();
 
+    }
 	return (
 		<div>
-			<form onSubmit={''}>
-				<input
-					type='email'
-					onChange={change}
-					value={userValue.userName}
-					placeHolder='Your-Email@example.com'
-					name="email"
+			<form onSubmit={onSubmit}>
+				<label>
+					<input
+						type='email'
+						onChange={change}
+						value={userValue.userName}
+						placeholder='Your-Email@example.com'
+						name="email"
 				/>
-			</form>
-			<form>
+				</label>
+
+				<label>
 				<input
 					type='password'
 					value={userValue.password}
 					onChange={change}
-					placeHolder='password...'
+					placeholder='password...'
 					name="password"
 					
 				/>
+				</label>
 			</form>
 			<button onClick={change}>Log In</button>
 				<Link>
