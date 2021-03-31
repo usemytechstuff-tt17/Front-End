@@ -74,7 +74,7 @@ const EditPageForm = () => {
     }
 
     return(
-    <div>
+    <div className='editPageContainer'>
         <form onSubmit={handleSubmit}>
             <div className='edit-header'>
                 <h4>Editing: <strong>{editItem.item_name}</strong></h4>
