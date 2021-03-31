@@ -67,7 +67,7 @@ return(
             open={Boolean(anchorEl)}
             onClose={handleClose}
             >
-                <Link style={{textDecoration:"none", color:"black"}} to="/protected" ><MenuItem onClick={handleClose} >My Listings</MenuItem></Link>
+                <Link style={{textDecoration:"none", color:"black"}} to="/ownerpage" ><MenuItem onClick={handleClose} >My Listings</MenuItem></Link>
                 <Link style={{textDecoration:"none", color:"black"}} to="/createlisting"><MenuItem onClick={handleClose} > Create Listing</MenuItem></Link>
                 {isLoggedIn && localId && <MenuItem onClick={logout} >Log Out</MenuItem>}
                 {!isLoggedIn && !localId && <Link style={{textDecoration:"none", color:"black"}} to="/register" ><MenuItem onClick={handleClose} >Register</MenuItem></Link>}
