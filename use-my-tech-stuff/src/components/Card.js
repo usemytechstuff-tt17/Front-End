@@ -1,7 +1,11 @@
 import React, { useContext } from 'react';
-import { UserContext } from '../contexts/userContext';
 import { Link } from 'react-router-dom';
-import styled from 'styled-components'
+
+import { UserContext } from '../contexts/userContext';
+import { TechContext} from '../contexts/techContext';
+import styled from 'styled-components';
+import axiosWithAuth from '../utils/axiosWithAuth';
+
 
 const StyleDiv = styled.div`
 	border:1px solid black;
@@ -21,8 +25,25 @@ const StyleDiv = styled.div`
 
 const Card = (props) => {
 	const { isLoggedIn, localId } = useContext(UserContext);
-
+	const { tech, setTech } = useContext(TechContext);
 	const { card } = props;
+
+	const deleteItem = id => {  //Deletes item off of local state
+        setTech(tech.filter(item =>item.item_id !== Number(id)))
+    }
+
+    const handleDeleteClick = e => {
+        e.preventDefault();
+        axiosWithAuth()
+        .delete(`/items/${card.item_id}`)
+        .then(res => {
+            deleteItem(res.data.item_id)
+            // push('/ownerpage')
+        })
+        .catch(err => {
+            console.log({err})
+        })
+    }
 
 	return (
 		<StyleDiv className='card'>
@@ -34,7 +55,7 @@ const Card = (props) => {
 			{Number(localId)===card.user_id && isLoggedIn && (
 				<div className='ownerButtons'>
 					<Link to={`/editpage/${card.item_id}`}><button>edit</button></Link> 
-					<button>delete</button>
+					<button onClick={handleDeleteClick}>delete</button>
 				</div>
 			)}
 			{Number(localId)!==card.user_id && isLoggedIn && (

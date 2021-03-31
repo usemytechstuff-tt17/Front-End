@@ -62,7 +62,7 @@ const EditPageForm = () => {
     };
 
     const deleteItem = id => {  //Deletes item off of local state
-        setTech(tech.filter(item =>item.id !== Number(id)))
+        setTech(tech.filter(item =>item.item_id !== Number(id)))
     }
 
     const handleDeleteClick = e => {
