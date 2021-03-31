@@ -6,7 +6,6 @@ import { TechContext} from '../contexts/techContext';
 import styled from 'styled-components';
 import axiosWithAuth from '../utils/axiosWithAuth';
 
-import styled from 'styled-components'
 import Button from '@material-ui/core/Button'
 
 
