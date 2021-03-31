@@ -8,29 +8,36 @@ import Card from './Card';
 const initialUserData = [];
 
 const OwnerPage = () => {
-	const { id } = useParams();
+	// const { id } = useParams();
 	const { tech, setTech } = useContext(TechContext);
 
 	const [userData, setUserData] = useState(initialUserData);
 
 	useEffect(() => {
 		axiosWithAuth()
-			.get(`https://usemytechstuff.herokuapp.com/api/users/2/items`)
+			.get(`/users/items`)
 			.then((res) => {
-				console.log('OwnerPage: ', res.data);
+				// console.log('OwnerPage: ', res);
 				setUserData(res.data);
 			})
 			.catch((err) => {
-				console.log('Owner Page :', err);
+				console.log('Owner Page error :', err.response);
 			});
 	}, []);
 
 	return (
 		<div>
-			{userData.map((listing) => {
-				return <Card card={listing} />;
+            <div className='userInfo'>
+                <h2>Welcome {}</h2>
+                <p> Here are your {userData.length} items</p>
+
+            </div>
+            <div className='cardContainer'>
+                {userData.map((listing) => {
+				return <Card key={listing.item_id} card={listing} />;
 			})}
-			user page
+
+            </div>
 		</div>
 	);
 };
