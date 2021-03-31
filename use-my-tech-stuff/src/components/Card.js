@@ -58,7 +58,7 @@ const Card = (props) => {
 			{Number(localId)===card.user_id && isLoggedIn && (
 				<div className='ownerButtons'>
 					<Link to={`/editpage/${card.item_id}`}><Button color="primary" variant= "contained">edit</Button></Link> 
-					<Button color="secondary" variant= "contained">delete</Button>
+					<Button color="secondary" variant= "contained" onClick={handleDeleteClick}>delete</Button>
 				</div>
 			)}
 			{Number(localId)!==card.user_id && isLoggedIn && (
