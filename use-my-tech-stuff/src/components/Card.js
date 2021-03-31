@@ -2,20 +2,21 @@ import React, { useContext } from 'react';
 import { UserContext } from '../contexts/userContext';
 import { Link } from 'react-router-dom';
 import styled from 'styled-components'
+import Button from '@material-ui/core/Button'
 
 const StyleDiv = styled.div`
 	border:1px solid black;
 	color:black;
 	display:flex;
 	flex-direction:column;
-	width:20rem;
+	width:30rem;
 	margin: 10px 0;
-	border-radius:18px 18px 0 0;
+	border-radius:0 0 18px 18px;
 	box-shadow: -5px 8px #596C56;
 	background-color:white;
+	padding-bottom:2px;
 	img{
-		height:300px;
-		border-radius:18px 18px 0 0;
+		height:300px;		
 	}
 `
 
@@ -34,13 +35,13 @@ const Card = (props) => {
 			<p>Available: {card.item_available ? 'Yes' : 'No'}</p>
 			{Number(localId)===card.user_id && isLoggedIn && (
 				<div className='ownerButtons'>
-					<Link to={`/editpage/${card.item_id}`}><button >edit</button></Link> 
-					<button>delete</button>
+					<Link to={`/editpage/${card.item_id}`}><Button color="primary" variant= "contained">edit</Button></Link> 
+					<Button color="secondary" variant= "contained">delete</Button>
 				</div>
 			)}
 			{Number(localId)!==card.user_id && isLoggedIn && (
 				<div className='userButtons'>
-					<button disabled={card.item_available ? false : true}>add</button>
+					<Button color="default" variant="outlined" disabled={card.item_available ? false : true}>add</Button>
 				</div>
 			)}
 		</StyleDiv>

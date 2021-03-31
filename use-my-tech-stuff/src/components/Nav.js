@@ -55,8 +55,9 @@ const logout = () => {
 
 return(
     <NavDiv className='navbar'>
-        {/* <Link className="link" to="/" ><Home fontSize="large" style={{color:"black"}} /></Link> */}
-        <Link className="link" to="/" src="logo"><img src={Logo} alt='Use My Tech Stuff Logo' /></Link>
+        <Link className="link" to="/" ><Home style={{color:"black", fontSize: 50}} /></Link>
+
+        <img src={Logo} alt='Use My Tech Stuff Logo' />
         
         <nav>
             <MenuIcon onClick={handleClick} style={{ fontSize: 60 }}></MenuIcon>
