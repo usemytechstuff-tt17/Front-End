@@ -1,8 +1,14 @@
 import React, { useContext } from 'react';
-import { UserContext } from '../contexts/userContext';
 import { Link } from 'react-router-dom';
+
+import { UserContext } from '../contexts/userContext';
+import { TechContext} from '../contexts/techContext';
+import styled from 'styled-components';
+import axiosWithAuth from '../utils/axiosWithAuth';
+
 import styled from 'styled-components'
 import Button from '@material-ui/core/Button'
+
 
 const StyleDiv = styled.div`
 	border:1px solid black;
@@ -22,8 +28,25 @@ const StyleDiv = styled.div`
 
 const Card = (props) => {
 	const { isLoggedIn, localId } = useContext(UserContext);
-
+	const { tech, setTech } = useContext(TechContext);
 	const { card } = props;
+
+	const deleteItem = id => {  //Deletes item off of local state
+        setTech(tech.filter(item =>item.item_id !== Number(id)))
+    }
+
+    const handleDeleteClick = e => {
+        e.preventDefault();
+        axiosWithAuth()
+        .delete(`/items/${card.item_id}`)
+        .then(res => {
+            deleteItem(res.data.item_id)
+            // push('/ownerpage')
+        })
+        .catch(err => {
+            console.log({err})
+        })
+    }
 
 	return (
 		<StyleDiv className='card'>

@@ -10,20 +10,14 @@ const initialState= {
     item_description: '',
 };
 
-const putData = {
-    item_name: 'Gus',
-    item_price: '32',
-    item_description: 'yum',
-
-}
 
 const EditPageForm = () => {
     const { push,goBack } = useHistory();
-    
     const { id } = useParams();
     const { tech, setTech } = useContext(TechContext);
-    
+
     const [editItem, setEditItem] = useState(initialState)
+    const handleBack = () => goBack()
 
     // Populates the Edit Form fields with the item with id matching
     useEffect(() => {
