@@ -11,20 +11,19 @@ const initialState= {
     item_category: '',
 };
 
-const putData = {
-    item_name: 'Gus',
-    item_price: '32',
-    item_description: 'yum',
-    item_category: 'three',
-}
+// const putData = {
+//     item_name: 'Gus',
+//     item_price: '32',
+//     item_description: 'yum',
+//     item_category: 'three',
+// }
 
 const EditPageForm = () => {
     const { push,goBack } = useHistory();
-
     const { id } = useParams();
     const { tech, setTech } = useContext(TechContext);
-
     const [editItem, setEditItem] = useState(initialState)
+    const handleBack = () => goBack()
 
     // Populates the Edit Form fields with the item with id matching
     useEffect(() => {
@@ -46,11 +45,12 @@ const EditPageForm = () => {
         .put(`/items/${id}`, editItem)
         .then(res => {
             console.log('EditPage Put: ',res)
-            setTech([...tech, putData]) //update state
+            const filtered = tech.map(item => {})
+            setTech(filtered) //update state
             push(`/`)
         })
         .catch(err => {
-            console.log(err)
+            console.log('Submit err: ',err.response)
         });
     };
 
@@ -119,10 +119,10 @@ const EditPageForm = () => {
             </label>
             <div className='buttonContainer'>
                 <button>Save</button>
-                <button onClick={() => goBack()}>Cancel</button>
-                <button onClick={handleDeleteClick} >Delete</button>
             </div>
         </form>
+        <button onClick={() => goBack()}>Cancel</button>
+        <button onClick={handleDeleteClick} >Delete</button>
     </div>
     );
 };
