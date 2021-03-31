@@ -6,7 +6,7 @@ const useLocalStorage = (key,initialValue) => {
 
     const [value, setValue] = useState(() => {
         if (localStorage.getItem(key)){
-            return JSON.parse(localStorage.getItem(key))
+            return (localStorage.getItem(key))
         }
         localStorage.setItem(key, initialValue);
         return initialValue;
