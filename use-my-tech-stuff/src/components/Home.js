@@ -9,7 +9,7 @@ const StyleDiv = styled.div`
 	flex-flow: row wrap;
 	justify-content: space-around;
 	align-items: flex-end;
-	width:90vw;
+	
 `
 const Home = () => {
 	const { tech } = useContext(TechContext);
