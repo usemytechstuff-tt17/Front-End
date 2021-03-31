@@ -1,7 +1,8 @@
-import React, { useContext } from 'react';
+import React, { Component, useContext } from 'react';
 import { UserContext } from '../contexts/userContext';
+import { Link } from 'react-router-dom';
 
-const owner = false;
+const owner = true;
 
 const Card = (props) => {
 	const { isLoggedIn } = useContext(UserContext);
@@ -15,7 +16,7 @@ const Card = (props) => {
 			<p>Available: {card.item_available ? 'Yes' : 'No'}</p>
 			{owner && (
 				<div className='ownerButtons'>
-					<button>edit</button>
+					<Link to={`/editpage/${card.item_id}`}><button>edit</button></Link> 
 					<button>delete</button>
 				</div>
 			)}

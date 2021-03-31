@@ -8,20 +8,20 @@ import Card from './Card';
 const initialUserData = [];
 
 const OwnerPage = () => {
-	const { id } = useParams();
+	// const { id } = useParams();
 	const { tech, setTech } = useContext(TechContext);
 
 	const [userData, setUserData] = useState(initialUserData);
 
 	useEffect(() => {
 		axiosWithAuth()
-			.get(`https://usemytechstuff.herokuapp.com/api/users/2/items`)
+			.get(`/users/items`)
 			.then((res) => {
-				console.log('OwnerPage: ', res.data);
+				// console.log('OwnerPage: ', res);
 				setUserData(res.data);
 			})
 			.catch((err) => {
-				console.log('Owner Page :', err);
+				console.log('Owner Page error :', err.response);
 			});
 	}, []);
 
