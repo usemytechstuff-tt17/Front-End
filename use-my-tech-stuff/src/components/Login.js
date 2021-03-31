@@ -1,5 +1,7 @@
 import React, { useState } from 'react';
 import {Link} from 'react-router-dom';
+import TextField from '@material-ui/core/TextField';
+import Button from '@material-ui/core/Button'
 
 export default function LoginForm() {
 	const initialValue = { email: '', username:'', password: '' };
@@ -18,29 +20,31 @@ export default function LoginForm() {
 		<div>
 			<form onSubmit={onSubmit}>
 				<label>
-					<input
+				<TextField
 						type='email'
 						onChange={change}
 						value={userValue.userName}
 						placeholder='Your-Email@example.com'
 						name="email"
+						variant="outlined"
 				/>
 				</label>
 
 				<label>
-				<input
+				<TextField
 					type='password'
 					value={userValue.password}
 					onChange={change}
 					placeholder='password...'
 					name="password"
+					variant="outlined"
 					
 				/>
 				</label>
 			</form>
-			<button onClick={change}>Log In</button>
+			<Button variant= "contained" onClick={change}>Log In</Button>
 				<Link to="/register">
-					<button>Register</button>
+					<Button variant= "contained" >Register</Button>
 				</Link>
 		</div>
 	);
