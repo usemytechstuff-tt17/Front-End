@@ -22,7 +22,6 @@ export default function LoginForm() {
 	const submitLogin = (value) => {
 		axios.post('https://usemytechstuff.herokuapp.com/api/users/login', value)
 		.then(res => {
-			console.log(res)
 			setLocalId(res.data.user_id);
 			setIsLoggedIn(res.data.token);
 			push('/')
