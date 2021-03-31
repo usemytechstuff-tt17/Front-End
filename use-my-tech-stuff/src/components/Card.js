@@ -1,8 +1,12 @@
 import React, { Component, useContext } from 'react';
 import { UserContext } from '../contexts/userContext';
 import { Link } from 'react-router-dom';
+import styled from 'styled-components'
 
-
+const StyleDiv = styled.div`
+	border:1px solid white;
+	color:white;
+`
 
 const Card = (props) => {
 	const { isLoggedIn } = useContext(UserContext);
@@ -11,7 +15,7 @@ const Card = (props) => {
     const currentUserId = localStorage.getItem('userId')
 
 	return (
-		<div className='card'>
+		<StyleDiv className='card'>
 			<h3>Item: {card.item_name}</h3>
 			<p>Price: {card.item_price}</p>
 			<p>Owner: {card.item_owner}</p>
@@ -27,7 +31,7 @@ const Card = (props) => {
 					<button disabled={card.item_available ? false : true}>add</button>
 				</div>
 			)}
-		</div>
+		</StyleDiv>
 	);
 };
 
