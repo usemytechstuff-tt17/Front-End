@@ -41,10 +41,8 @@ function App() {
 					<Nav />
 					{/* <h1>Use My Tech Stuff</h1> */}
 					<Switch>
-
 						<PrivateRoute  path='/editpage/:id' component={EditPageForm} />
 						<PrivateRoute  path='/ownerpage' component={OwnerPage} />
-
 						<Route path='/createlisting' component={CreateListing} />
 						<Route path='/login' component={LoginForm} />
 						<Route path='/register' component={Create} />
