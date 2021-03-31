@@ -13,7 +13,7 @@ const StyleDiv = styled.div`
     background-color:#B28869;
     width:40%;
     margin: auto;
-    padding 8%;
+    padding: 8%;
     border-radius: 8px;
     input{
         margin:5px;

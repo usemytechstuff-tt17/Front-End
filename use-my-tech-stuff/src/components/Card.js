@@ -6,6 +6,11 @@ import styled from 'styled-components'
 const StyleDiv = styled.div`
 	border:1px solid white;
 	color:white;
+	display:flex;
+	flex-direction:column;
+	width:20rem;
+	margin: 10px 0;
+	border-radius:8px;
 `
 
 const Card = (props) => {

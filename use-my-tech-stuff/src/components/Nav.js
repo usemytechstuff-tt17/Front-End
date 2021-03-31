@@ -18,7 +18,8 @@ const NavDiv = styled.div`
         text-align: bottom;
     }
     img{
-        height:5rem;
+        height:6rem;
+        width:6rem;
     }
     .link{
         text-decoration:none;
@@ -41,7 +42,6 @@ return(
     <NavDiv className='navbar'>
         <Link className="link" to="/" ><Home fontSize="large" style={{color:"black"}} /></Link>
         <img src={Logo} alt='Use My Tech Stuff Logo' />
-        <p>Connecting people in need to people with Greed!</p>
         <nav>
             <MenuIcon onClick={handleClick} style={{ fontSize: 40 }}></MenuIcon>
             <Menu
@@ -51,10 +51,10 @@ return(
             open={Boolean(anchorEl)}
             onClose={handleClose}
             >
-                <MenuItem onClick={handleClose} ><Link style={{textDecoration:"none", color:"black"}} to="/protected" >My Listings</Link></MenuItem>
-                <MenuItem onClick={handleClose} ><Link style={{textDecoration:"none", color:"black"}} to="/createlisting"> Create Listing</Link></MenuItem>
-                <MenuItem onClick={handleClose} ><Link style={{textDecoration:"none", color:"black"}} to="/register" >Register</Link></MenuItem>
-                <MenuItem onClick={handleClose} ><Link style={{textDecoration:"none", color:"black"}} to="/login" >Log In</Link></MenuItem>
+                <Link style={{textDecoration:"none", color:"black"}} to="/protected" ><MenuItem onClick={handleClose} >My Listings</MenuItem></Link>
+                <Link style={{textDecoration:"none", color:"black"}} to="/createlisting"><MenuItem onClick={handleClose} > Create Listing</MenuItem></Link>
+                <Link style={{textDecoration:"none", color:"black"}} to="/register" ><MenuItem onClick={handleClose} >Register</MenuItem></Link>
+                <Link style={{textDecoration:"none", color:"black"}} to="/login" ><MenuItem onClick={handleClose} >Log In</MenuItem></Link>
             </Menu>
         </nav>
     </NavDiv>
