@@ -1,10 +1,10 @@
-import React, {useState} from 'react';
+import React, { useState } from 'react';
 import { Link } from 'react-router-dom';
 import Menu from '@material-ui/core/Menu';
 import MenuItem from '@material-ui/core/MenuItem';
 import MenuIcon from '@material-ui/icons/Menu';
 import Logo from '../theme/UseMyTechStuffLogo.png'
-import PrivateRoute from '../utils/PrivateRoute'
+// import PrivateRoute from '../utils/PrivateRoute'
 import styled from 'styled-components'
 import { Home } from "@material-ui/icons"
 
