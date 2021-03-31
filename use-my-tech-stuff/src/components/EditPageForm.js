@@ -8,23 +8,23 @@ const initialState= {
     item_name: '',
     item_price: '',
     item_description: '',
-    item_category: '',
 };
 
 const putData = {
     item_name: 'Gus',
     item_price: '32',
     item_description: 'yum',
-    item_category: 'three',
+
 }
 
 const EditPageForm = () => {
     const { push,goBack } = useHistory();
-
+    
     const { id } = useParams();
     const { tech, setTech } = useContext(TechContext);
-
+    
     const [editItem, setEditItem] = useState(initialState)
+    console.log(tech)
 
     // Populates the Edit Form fields with the item with id matching
     useEffect(() => {
@@ -37,20 +37,29 @@ const EditPageForm = () => {
         .catch(err => {
             console.log(err.response)
         });
-    }, []);
+    }, [id]);
+
 
     // Updates both state and the server with the edits
     const handleSubmit = e => {
+        console.log(editItem)
+        console.log('put id',id)
         e.preventDefault();
         axiosWithAuth()
         .put(`/items/${id}`, editItem)
         .then(res => {
             console.log('EditPage Put: ',res)
-            setTech([...tech, putData]) //update state
-            push(`/`)
+            console.log(res.data)
+            const filtered = tech.map(item => {
+                return item.item_id === res.data.item_id ? res.data : item
+            })
+            console.log(filtered)
+            setTech(filtered) //update state
+            console.log(tech)
+            push('/');
         })
         .catch(err => {
-            console.log(err)
+            console.log(err.response)
         });
     };
 
@@ -62,7 +71,7 @@ const EditPageForm = () => {
     };
 
     const deleteItem = id => {  //Deletes item off of local state
-        setTech(tech.filter(item =>item.id !== Number(id)))
+        setTech(tech.filter(item =>item.item_id !== Number(id)))
     }
 
     const handleDeleteClick = e => {
@@ -71,7 +80,8 @@ const EditPageForm = () => {
         .delete(`/items/${id}`)
         .then(res => {
             deleteItem(id)
-            push('/ownerpage')
+            push('/');
+
         })
         .catch(err => {
             alert(err.response)
@@ -92,7 +102,7 @@ const EditPageForm = () => {
                 name= "item_name"
                 />
             </label>
-            <label>Category
+            {/* <label>Category
                 <select name="category" value={editItem.item_category} onChange={changeHandler}>
                     <option value="">--Select Category--</option>
                     <option value="photography">Film & Photography</option>
@@ -100,7 +110,7 @@ const EditPageForm = () => {
                     <option value="electronics">Electronics</option>
                     <option value="other">Other</option>
                 </select>
-            </label>
+            </label> */}
             <label>Price
                 <input 
                 type= "text"
@@ -119,7 +129,7 @@ const EditPageForm = () => {
             </label>
             <div className='buttonContainer'>
                 <button>Save</button>
-                <button onClick={() => goBack()}>Cancel</button>
+                <button onClick={() => push('/')}>Cancel</button>
                 <button onClick={handleDeleteClick} >Delete</button>
             </div>
         </form>
