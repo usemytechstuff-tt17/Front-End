@@ -24,13 +24,13 @@ const Card = (props) => {
 			<p>Price: {card.item_price}</p>
 			<p>Owner: {card.item_owner}</p>
 			<p>Available: {card.item_available ? 'Yes' : 'No'}</p>
-			{Number(localId)===card.user_id && localId && isLoggedIn && (
+			{Number(localId)===card.user_id && isLoggedIn && (
 				<div className='ownerButtons'>
 					<Link to={`/editpage/${card.item_id}`}><button>edit</button></Link> 
 					<button>delete</button>
 				</div>
 			)}
-			{Number(localId)!==card.user_id && localId && isLoggedIn && (
+			{Number(localId)!==card.user_id && isLoggedIn && (
 				<div className='userButtons'>
 					<button disabled={card.item_available ? false : true}>add</button>
 				</div>
