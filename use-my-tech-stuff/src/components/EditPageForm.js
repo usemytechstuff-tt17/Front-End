@@ -45,8 +45,7 @@ const EditPageForm = () => {
         .put(`/items/${id}`, editItem)
         .then(res => {
             console.log('EditPage Put: ',res)
-            // Need to setState with context state
-            setTech([...tech, putData])
+            setTech([...tech, putData]) //update state
             push(`/`)
         })
         .catch(err => {
@@ -59,8 +58,24 @@ const EditPageForm = () => {
             ...editItem,
             [e.target.name]: e.target.value
         });
-        // console.log('changeH: ',editItem)
     };
+
+    const deleteItem = id => {  //Deletes item off of local state
+        setTech(tech.filter(item =>item.id !== Number(id)))
+    }
+
+    const handleDeleteClick = e => {
+        e.preventDefault();
+        axiosWithAuth()
+        .delete(`/items/${id}`)
+        .then(res => {
+            deleteItem(id)
+            push('/ownerpage')
+        })
+        .catch(err => {
+            alert(err.response)
+        })
+    }
 
     return(
     <div>
@@ -104,6 +119,7 @@ const EditPageForm = () => {
             <div className='buttonContainer'>
                 <button>Save</button>
                 <Link to='/ownerpage' ><button>Cancel</button></Link>
+                <button onClick={handleDeleteClick} >Delete</button>
             </div>
         </form>
     </div>
