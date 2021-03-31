@@ -11,20 +11,22 @@ import { makeStyles } from '@material-ui/core/styles';
 const useStyles = makeStyles((theme) => ({
     formControl: {
       margin: theme.spacing(1),
-      minWidth: 120,
+      minWidth: 180,
     },
     selectEmpty: {
       marginTop: theme.spacing(2),
     },
   }));
 const StyleDiv = styled.div`
-    /* display:flex;
-    flex-direction: column;
-    justify-content:left;
-    align-items:flex-start; */
-    background-color:#B28869;
+    background-color:white;
     border:1px solid white;
     color:white;
+    width:30rem;
+    margin:auto;
+    margin-top:5rem;
+    border-radius: 8px;
+    box-shadow: -5px 8px #596C56;
+    padding:5%;
 `
 
 const initialFormValues= {
@@ -52,6 +54,7 @@ export default function CreateListing() {
 
     return(
     <StyleDiv>
+    <h1>Create Listing</h1>
     <form onSubmit={onSubmit}>
         <label>
             <TextField 
@@ -68,7 +71,7 @@ export default function CreateListing() {
         <label>
         <FormControl className={classes.formControl}>
             <InputLabel id="category">Category</InputLabel>
-            <Select labelId="category" name="category" value={formValues.category} onChange={onChange} >
+            <Select variant="outlined" labelId="category" name="category" value={formValues.category} onChange={onChange} >
                 <MenuItem value="">--Select Category--</MenuItem>
                 <MenuItem value="photography">Film & Photography</MenuItem>
                 <MenuItem value="television">TV's</MenuItem>
