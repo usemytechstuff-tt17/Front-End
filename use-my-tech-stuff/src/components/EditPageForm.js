@@ -8,20 +8,14 @@ const initialState= {
     item_name: '',
     item_price: '',
     item_description: '',
-    item_category: '',
 };
 
-// const putData = {
-//     item_name: 'Gus',
-//     item_price: '32',
-//     item_description: 'yum',
-//     item_category: 'three',
-// }
 
 const EditPageForm = () => {
     const { push,goBack } = useHistory();
     const { id } = useParams();
     const { tech, setTech } = useContext(TechContext);
+
     const [editItem, setEditItem] = useState(initialState)
     const handleBack = () => goBack()
 
@@ -30,13 +24,13 @@ const EditPageForm = () => {
         axiosWithAuth()
         .get(`/items/${id}`)
         .then(res => {
-            console.log('Use Effect: ',res.data)
             setEditItem(res.data)
         })
         .catch(err => {
             console.log(err.response)
         });
-    }, []);
+    }, [id]);
+
 
     // Updates both state and the server with the edits
     const handleSubmit = e => {
@@ -44,13 +38,14 @@ const EditPageForm = () => {
         axiosWithAuth()
         .put(`/items/${id}`, editItem)
         .then(res => {
-            console.log('EditPage Put: ',res)
-            const filtered = tech.map(item => {})
+            const filtered = tech.map(item => {
+                return item.item_id === res.data.item_id ? res.data : item
+            })
             setTech(filtered) //update state
-            push(`/`)
+            goBack()
         })
         .catch(err => {
-            console.log('Submit err: ',err.response)
+            console.log(err.response)
         });
     };
 
@@ -71,7 +66,7 @@ const EditPageForm = () => {
         .delete(`/items/${id}`)
         .then(res => {
             deleteItem(id)
-            push('/ownerpage')
+            goBack()
         })
         .catch(err => {
             alert(err.response)
@@ -92,7 +87,7 @@ const EditPageForm = () => {
                 name= "item_name"
                 />
             </label>
-            <label>Category
+            {/* <label>Category
                 <select name="category" value={editItem.item_category} onChange={changeHandler}>
                     <option value="">--Select Category--</option>
                     <option value="photography">Film & Photography</option>
@@ -100,7 +95,7 @@ const EditPageForm = () => {
                     <option value="electronics">Electronics</option>
                     <option value="other">Other</option>
                 </select>
-            </label>
+            </label> */}
             <label>Price
                 <input 
                 type= "text"
@@ -121,8 +116,8 @@ const EditPageForm = () => {
                 <button>Save</button>
             </div>
         </form>
-        <button onClick={() => goBack()}>Cancel</button>
-        <button onClick={handleDeleteClick} >Delete</button>
+                <button onClick={()=>goBack()}>Cancel</button>
+                <button onClick={handleDeleteClick} >Delete</button>
     </div>
     );
 };

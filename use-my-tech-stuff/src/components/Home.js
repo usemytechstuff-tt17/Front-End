@@ -7,7 +7,7 @@ import styled from 'styled-components'
 const StyleDiv = styled.div`
 	display:flex;
 	flex-flow: row wrap;
-	justify-content: space-around;
+	justify-content: space-evenly;
 	align-items: flex-end;
 	
 `
