@@ -24,14 +24,12 @@ const EditPageForm = () => {
     const { tech, setTech } = useContext(TechContext);
     
     const [editItem, setEditItem] = useState(initialState)
-    console.log(tech)
 
     // Populates the Edit Form fields with the item with id matching
     useEffect(() => {
         axiosWithAuth()
         .get(`/items/${id}`)
         .then(res => {
-            console.log('Use Effect: ',res.data)
             setEditItem(res.data)
         })
         .catch(err => {
@@ -42,21 +40,15 @@ const EditPageForm = () => {
 
     // Updates both state and the server with the edits
     const handleSubmit = e => {
-        console.log(editItem)
-        console.log('put id',id)
         e.preventDefault();
         axiosWithAuth()
         .put(`/items/${id}`, editItem)
         .then(res => {
-            console.log('EditPage Put: ',res)
-            console.log(res.data)
             const filtered = tech.map(item => {
                 return item.item_id === res.data.item_id ? res.data : item
             })
-            console.log(filtered)
             setTech(filtered) //update state
-            console.log(tech)
-            push('/');
+            goBack()
         })
         .catch(err => {
             console.log(err.response)
@@ -80,8 +72,7 @@ const EditPageForm = () => {
         .delete(`/items/${id}`)
         .then(res => {
             deleteItem(id)
-            push('/');
-
+            goBack()
         })
         .catch(err => {
             alert(err.response)
@@ -129,10 +120,10 @@ const EditPageForm = () => {
             </label>
             <div className='buttonContainer'>
                 <button>Save</button>
-                <button onClick={() => push('/')}>Cancel</button>
-                <button onClick={handleDeleteClick} >Delete</button>
             </div>
         </form>
+                <button onClick={()=>goBack()}>Cancel</button>
+                <button onClick={handleDeleteClick} >Delete</button>
     </div>
     );
 };
