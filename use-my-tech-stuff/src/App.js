@@ -12,29 +12,15 @@ import EditPageForm from './components/EditPageForm';
 import CreateListing from './components/CreateListing';
 
 import './App.css';
-import axios from 'axios';
 import PrivateRoute from './utils/PrivateRoute';
 import axiosWithAuth from './utils/axiosWithAuth';
+import useId from './hooks/useId';
 
 function App() {
-	
+
 	const [tech, setTech] = useState([]);
-	const [isLoggedIn, setIsLoggedIn] = useState(false);
+	const [localId, setLocalId,isLoggedIn, setIsLoggedIn] = useId(false,false);
 
-
-	// Quick way to set state without knowing what localStorage item will be called - may change later
-	useEffect(() => {
-		
-
-		const userStatus = localStorage.getItem('token');
-		if (!userStatus) {
-			setIsLoggedIn(false);
-		} else {
-			setIsLoggedIn(true);
-		}
-	}, [isLoggedIn]);
-
-	console.log(isLoggedIn);
 
 	useEffect(() => {
 		axiosWithAuth()
@@ -51,7 +37,7 @@ function App() {
 	return (
 		<div className='app'>
 			<TechContext.Provider value={{ tech, setTech }}>
-				<UserContext.Provider value={{ isLoggedIn }}>
+				<UserContext.Provider value={{ isLoggedIn, setIsLoggedIn, setLocalId, localId }}>
 					<Nav />
 					<h1>Use My Tech Stuff</h1>
 					<Switch>
