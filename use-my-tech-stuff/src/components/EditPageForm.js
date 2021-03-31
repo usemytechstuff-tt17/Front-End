@@ -1,34 +1,40 @@
-import React from 'react';
-import axios from 'axios';
-import { useParams, useHistory } from 'react-router-dom';
+import React, { useState, useEffect, useContext } from 'react';
+import { useParams, useHistory, Link } from 'react-router-dom';
+
 import axiosWithAuth from '../utils/axiosWithAuth';
 import { TechContext } from '../contexts/techContext';
 
+const initialState= {
+    item_name: '',
+    item_price: '',
+    item_description: '',
+    item_category: '',
+};
+
+const putData = {
+    item_name: 'Gus',
+    item_price: '32',
+    item_description: 'yum',
+    item_category: 'three',
+}
 
 const EditPageForm = () => {
     const { push } = useHistory();
     const { id } = useParams();
     const { tech, setTech } = useContext(TechContext);
 
-    initialState= {
-        itemName: '',
-        price: '',
-        description: '',
-        category: '',
-    };
-
     const [editItem, setEditItem] = useState(initialState)
 
     // Populates the Edit Form fields with the item with id matching
     useEffect(() => {
         axiosWithAuth()
-        .get(`https://usemytechstuff.herokuapp.com/api/items/${id}`)
+        .get(`/items/${id}`)
         .then(res => {
-            console.log(res)
+            console.log('Use Effect: ',res.data)
             setEditItem(res.data)
         })
         .catch(err => {
-            console.log(err)
+            console.log(err.response)
         });
     }, []);
 
@@ -36,23 +42,24 @@ const EditPageForm = () => {
     const handleSubmit = e => {
         e.preventDefault();
         axiosWithAuth()
-        .put(`https://usemytechstuff.herokuapp.com/api/items/${id}`, editItem)
+        .put(`/items/${id}`, editItem)
         .then(res => {
-            console.log(res)
+            console.log('EditPage Put: ',res)
             // Need to setState with context state
-            setTech(res.data)
-            push(`/ownerpage`)
+            setTech([...tech, putData])
+            push(`/`)
         })
         .catch(err => {
             console.log(err)
         });
     };
 
-    const changeHandeler = e => {
+    const changeHandler = e => {
         setEditItem({
-            ...item,
+            ...editItem,
             [e.target.name]: e.target.value
         });
+        // console.log('changeH: ',editItem)
     };
 
     return(
@@ -64,13 +71,13 @@ const EditPageForm = () => {
             <label>Item Name
                 <input 
                 type= "text"
-                onChange={onChange}
-                value= {formValues.itemName}
-                name= "itemName"
+                onChange={changeHandler}
+                value= {editItem.item_name}
+                name= "item_name"
                 />
             </label>
             <label>Category
-                <select name="category" value={formValues.category} onChange={changeHandeler}>
+                <select name="category" value={editItem.item_category} onChange={changeHandler}>
                     <option value="">--Select Category--</option>
                     <option value="photography">Film & Photography</option>
                     <option value="television">TV's</option>
@@ -81,22 +88,22 @@ const EditPageForm = () => {
             <label>Price
                 <input 
                 type= "text"
-                onChange={changeHandeler}
-                value= {formValues.price}
-                name= "price"
+                onChange={changeHandler}
+                value= {editItem.item_price}
+                name= "item_price"
                 />
             </label>
             <label>Description
                 <input 
-                type= "password"
-                onChange={changeHandeler}
-                value= {formValues.description}
-                name= "description"
+                type= "text"
+                onChange={changeHandler}
+                value= {editItem.item_description}
+                name= "item_description"
                 />
             </label>
             <div className='buttonContainer'>
                 <button>Save</button>
-                <Link to={'/ownerpage'} ><button>Cancel</button></Link>
+                <Link to='/ownerpage' ><button>Cancel</button></Link>
             </div>
         </form>
     </div>

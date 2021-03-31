@@ -8,22 +8,23 @@ import Home from './components/Home';
 import LoginForm from './components/Login';
 import Nav from './components/Nav';
 import OwnerPage from './components/OwnerPage';
-
+import EditPageForm from './components/EditPageForm';
 import CreateListing from './components/CreateListing';
 
 import './App.css';
 import axios from 'axios';
 import PrivateRoute from './utils/PrivateRoute';
+import axiosWithAuth from './utils/axiosWithAuth';
 
 function App() {
+	
 	const [tech, setTech] = useState([]);
 	const [isLoggedIn, setIsLoggedIn] = useState(false);
 
+
 	// Quick way to set state without knowing what localStorage item will be called - may change later
 	useEffect(() => {
-		if (!localStorage.token) {
-			localStorage.setItem('token', '');
-		}
+		
 
 		const userStatus = localStorage.getItem('token');
 		if (!userStatus) {
@@ -36,9 +37,10 @@ function App() {
 	console.log(isLoggedIn);
 
 	useEffect(() => {
-		axios
-			.get('https://usemytechstuff.herokuapp.com/api/items')
+		axiosWithAuth()
+			.get('/items')
 			.then((res) => {
+				console.log(res)
 				setTech(res.data);
 			})
 			.catch((err) => {
@@ -53,6 +55,7 @@ function App() {
 					<Nav />
 					<h1>Use My Tech Stuff</h1>
 					<Switch>
+						<PrivateRoute exact path='/editpage/:id' component={EditPageForm} />
 						<PrivateRoute exact path='/ownerpage' component={OwnerPage} />
 						<Route path='/createlisting' component={CreateListing} />
 						<Route path='/login' component={LoginForm} />
