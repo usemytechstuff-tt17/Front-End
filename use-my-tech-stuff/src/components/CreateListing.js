@@ -103,7 +103,7 @@ export default function CreateListing() {
             />
         </label>
         <br />
-        <Button variant= "contained">Submit</Button>
+        <Button variant= "contained" type="submit">Submit</Button>
     </form>
     </StyleDiv>
     )
