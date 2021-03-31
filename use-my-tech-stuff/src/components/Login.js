@@ -1,4 +1,6 @@
 import React, { useState } from 'react';
+import TextField from '@material-ui/core/TextField';
+import Button from '@material-ui/core/Button'
 import {useHistory} from 'react-router-dom';
 import axios from 'axios';
 
@@ -37,25 +39,23 @@ export default function LoginForm() {
 	return (
 		<div>
 			<form onSubmit={onSubmit}>
-				<label>
-					<input
+				<TextField
+						variant="outlined"
 						type='text'
 						onChange={handleChange}
 						value={userValue.username}
 						placeholder='username...'
 						name="username"
 				/>
-				</label>
-				<label>
-				<input
+				<TextField
 					type='password'
 					value={userValue.password}
 					onChange={handleChange}
 					placeholder='password...'
 					name="password"
+					variant="outlined"
 				/>
-				</label>
-			<button>Log In</button>
+		  <Button type='submit' variant= "contained" >Log In</Button>
 			</form>
 		</div>
 	);
