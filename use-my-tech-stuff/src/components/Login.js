@@ -1,47 +1,62 @@
 import React, { useState } from 'react';
-import {Link} from 'react-router-dom';
+import {useHistory} from 'react-router-dom';
+import axios from 'axios';
 
 export default function LoginForm() {
-	const initialValue = { email: '', username:'', password: '' };
-	const userInfo = [];
-	const [info, setInfo] = useState(userInfo);
+
+	const initialValue = {  username:'', password: '' };
 	const [userValue, setUserValue] = useState(initialValue);
-	const change = (evt) => {
-		const{name, value}=evt.target
+	
+	const handleChange = (evt) => {
+		const{name, value}=evt.target;
 		setUserValue({...userValue, [name]:value})
 	};
-	const onSubmit = (evt) => {
-        evt.preventDefault();
 
-    }
+	const {push} = useHistory();
+	
+	const submitLogin = (value) => {
+		axios.post('https://usemytechstuff.herokuapp.com/api/users/login', value)
+		.then(res => {
+			console.log(res)
+			localStorage.setItem('userId', res.data.user_id);
+			localStorage.setItem('token', res.data.token);
+			push('/')
+		})
+		.catch(err => {
+			console.log(err.response)
+		})
+	}
+	
+	const onSubmit = (evt) => {
+		evt.preventDefault();
+		submitLogin(userValue);
+	}
+	
+	
+	
 	return (
 		<div>
 			<form onSubmit={onSubmit}>
 				<label>
 					<input
-						type='email'
-						onChange={change}
-						value={userValue.userName}
-						placeholder='Your-Email@example.com'
-						name="email"
+						type='text'
+						onChange={handleChange}
+						value={userValue.username}
+						placeholder='username...'
+						name="username"
 				/>
 				</label>
-
 				<label>
 				<input
 					type='password'
 					value={userValue.password}
-					onChange={change}
+					onChange={handleChange}
 					placeholder='password...'
 					name="password"
-					
 				/>
 				</label>
+			<button>Log In</button>
 			</form>
-			<button onClick={change}>Log In</button>
-				<Link to="/register">
-					<button>Register</button>
-				</Link>
 		</div>
 	);
 }

@@ -1,30 +1,44 @@
 import React, {useState} from 'react'
 import TextField from '@material-ui/core/TextField';
-import Checkbox from '@material-ui/core/Checkbox';
-import Button from '@material-ui/core/Button'
+import Button from '@material-ui/core/Button';
+import axios from 'axios';
+import { useHistory } from 'react-router';
 
 
 const initialFormValues= {
     username: '',
     email: '',
     password: '',
-    owner:false
 }
 
 const initialUsers=[]
 export default function CreateUser() {
-    const [userInfo, setUserInfo] = useState(initialUsers);
+
+    const {push} = useHistory()
+    
     const [formValues, setFormValues] = useState(initialFormValues);
+
+
+    const submitRegister = (value) => {
+
+		axios.post('https://usemytechstuff.herokuapp.com/api/users/register', value)
+			 .then(res => {
+				 console.log(res);
+                 push('/login')
+			 })
+			 .catch(err => {
+				 console.log(err.response);
+			 })
+	}
 
     const onSubmit = (evt) => {
         evt.preventDefault();
-
+        submitRegister(formValues);
     }
 
     const onChange = (evt) => {
-        const {name, value, checked, type} = evt.target
-        const valueToUse = type === 'checkbox' ? checked : value
-        setFormValues({...formValues, [name]:valueToUse});
+        const {name, value} = evt.target
+        setFormValues({...formValues, [name]:value});
     }
 
     return(
@@ -63,16 +77,7 @@ export default function CreateUser() {
             />
         </label>
         <br/>
-        <label>Owner?
-            <Checkbox
-            name="owner"
-            type="checkbox"
-            checked={formValues.owner}
-            onChange={onChange}
-            />
-        </label>
-        <br/>
-        <Button variant= "contained">Submit</Button>
+        <Button type='submit' variant= "contained">Submit</Button>
     </form>
     
     )
