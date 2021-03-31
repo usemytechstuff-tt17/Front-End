@@ -3,7 +3,8 @@ import { Link, useHistory } from 'react-router-dom';
 import Menu from '@material-ui/core/Menu';
 import MenuItem from '@material-ui/core/MenuItem';
 import MenuIcon from '@material-ui/icons/Menu';
-import Logo from '../theme/UseMyTechStuffLogo.png'
+// import Logo from '../theme/UseMyTechStuffLogo.png'
+import Logo from '../theme/NewLogo.png'
 // import PrivateRoute from '../utils/PrivateRoute'
 import styled from 'styled-components'
 import { Home } from "@material-ui/icons"
@@ -22,7 +23,7 @@ const NavDiv = styled.div`
     }
     img{
         height:6rem;
-        width:6rem;
+        width:10rem;
     }
     .link{
         text-decoration:none;
@@ -54,10 +55,11 @@ const logout = () => {
 
 return(
     <NavDiv className='navbar'>
-        <Link className="link" to="/" ><Home fontSize="large" style={{color:"black"}} /></Link>
-        <img src={Logo} alt='Use My Tech Stuff Logo' />
+        {/* <Link className="link" to="/" ><Home fontSize="large" style={{color:"black"}} /></Link> */}
+        <Link className="link" to="/" src="logo"><img src={Logo} alt='Use My Tech Stuff Logo' /></Link>
+        
         <nav>
-            <MenuIcon onClick={handleClick} style={{ fontSize: 40 }}></MenuIcon>
+            <MenuIcon onClick={handleClick} style={{ fontSize: 60 }}></MenuIcon>
             <Menu
             name="menu"
             anchorEl={anchorEl}

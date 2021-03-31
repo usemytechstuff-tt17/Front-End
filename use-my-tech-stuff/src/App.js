@@ -39,7 +39,7 @@ function App() {
 			<TechContext.Provider value={{ tech, setTech }}>
 				<UserContext.Provider value={{ isLoggedIn, setIsLoggedIn, setLocalId, localId }}>
 					<Nav />
-					<h1>Use My Tech Stuff</h1>
+					{/* <h1>Use My Tech Stuff</h1> */}
 					<Switch>
 						<PrivateRoute exact path='/editpage/:id' component={EditPageForm} />
 						<PrivateRoute exact path='/ownerpage' component={OwnerPage} />

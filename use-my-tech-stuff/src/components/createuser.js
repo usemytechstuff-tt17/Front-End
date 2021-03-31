@@ -10,11 +10,13 @@ const StyleDiv = styled.div`
     flex-direction: column;
     justify-content:center;
     align-items:left;
-    background-color:#B28869;
-    width:40%;
-    margin: auto;
-    padding: 8%;
+    background-color:white;
+    width:30rem;
+    padding: 6rem;
+    margin:auto;
+    margin-top:5rem;
     border-radius: 8px;
+    box-shadow: -5px 8px #596C56;
     input{
         margin:5px;
     }

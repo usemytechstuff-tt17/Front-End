@@ -11,11 +11,12 @@ const StyleDiv = styled.div`
 	width:20rem;
 	margin: 10px 0;
 	border-radius:18px 18px 0 0;
+	box-shadow: -5px 8px #596C56;
+	background-color:white;
 	img{
 		height:300px;
 		border-radius:18px 18px 0 0;
 	}
-	box-shadow: -5px 8px #596C56;
 `
 
 const Card = (props) => {
