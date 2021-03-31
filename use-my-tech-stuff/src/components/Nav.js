@@ -1,5 +1,5 @@
-import React, { useState } from 'react';
-import { Link } from 'react-router-dom';
+import React, { useState, useContext } from 'react';
+import { Link, useHistory } from 'react-router-dom';
 import Menu from '@material-ui/core/Menu';
 import MenuItem from '@material-ui/core/MenuItem';
 import MenuIcon from '@material-ui/icons/Menu';
@@ -7,6 +7,7 @@ import Logo from '../theme/UseMyTechStuffLogo.png'
 // import PrivateRoute from '../utils/PrivateRoute'
 import styled from 'styled-components'
 import { Home } from "@material-ui/icons"
+import { UserContext } from '../contexts/userContext';
 
 const NavDiv = styled.div`
     display: flex;
@@ -38,6 +39,16 @@ const handleClick = (event) => {
 const handleClose = () => {
     setAnchorEl(null);
 };
+const { isLoggedIn, setIsLoggedIn, localId, setLocalId } = useContext(UserContext);
+
+const {push} = useHistory()
+
+const logout = () => {
+    setIsLoggedIn(false);
+    setLocalId(false);
+    handleClose();
+}
+
 return(
     <NavDiv className='navbar'>
         <Link className="link" to="/" ><Home fontSize="large" style={{color:"black"}} /></Link>
@@ -54,7 +65,8 @@ return(
                 <Link style={{textDecoration:"none", color:"black"}} to="/protected" ><MenuItem onClick={handleClose} >My Listings</MenuItem></Link>
                 <Link style={{textDecoration:"none", color:"black"}} to="/createlisting"><MenuItem onClick={handleClose} > Create Listing</MenuItem></Link>
                 <Link style={{textDecoration:"none", color:"black"}} to="/register" ><MenuItem onClick={handleClose} >Register</MenuItem></Link>
-                <Link style={{textDecoration:"none", color:"black"}} to="/login" ><MenuItem onClick={handleClose} >Log In</MenuItem></Link>
+                {isLoggedIn && localId && <MenuItem onClick={logout} >Log Out</MenuItem>}
+                {!isLoggedIn && !localId && <Link style={{textDecoration:"none", color:"black"}} to="/login" ><MenuItem onClick={handleClose} >Log In</MenuItem></Link>}
             </Menu>
         </nav>
     </NavDiv>
