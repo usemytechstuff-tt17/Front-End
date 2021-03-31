@@ -29,7 +29,7 @@ const initialFormValues= {
     password: '',
 }
 
-const initialUsers=[]
+
 export default function CreateUser() {
 
     const {push} = useHistory()
