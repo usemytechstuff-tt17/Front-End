@@ -1,5 +1,5 @@
 import React, { useState, useEffect, useContext } from 'react';
-import { useParams, useHistory, Link } from 'react-router-dom';
+import { useParams, useHistory } from 'react-router-dom';
 
 import axiosWithAuth from '../utils/axiosWithAuth';
 import { TechContext } from '../contexts/techContext';
@@ -19,7 +19,8 @@ const putData = {
 }
 
 const EditPageForm = () => {
-    const { push } = useHistory();
+    const { push,goBack } = useHistory();
+
     const { id } = useParams();
     const { tech, setTech } = useContext(TechContext);
 
@@ -118,7 +119,7 @@ const EditPageForm = () => {
             </label>
             <div className='buttonContainer'>
                 <button>Save</button>
-                <Link to='/ownerpage' ><button>Cancel</button></Link>
+                <button onClick={() => goBack()}>Cancel</button>
                 <button onClick={handleDeleteClick} >Delete</button>
             </div>
         </form>
