@@ -1,40 +1,25 @@
 import React, { useEffect, useState, useContext } from 'react';
-import { useParams } from 'react-router-dom';
-import axiosWithAuth from '../utils/axiosWithAuth';
-import { TechContext } from '../contexts/techContext';
 
+import { TechContext } from '../contexts/techContext';
 import Card from './Card';
 
-const initialUserData = [];
-
 const OwnerPage = () => {
-	// const { id } = useParams();
-	const { tech, setTech } = useContext(TechContext);
+	const { tech } = useContext(TechContext);
 
-	const [userData, setUserData] = useState(initialUserData);
-
-	useEffect(() => {
-		axiosWithAuth()
-			.get(`/users/items`)
-			.then((res) => {
-				// console.log('OwnerPage: ', res);
-				setUserData(res.data);
-			})
-			.catch((err) => {
-				console.log('Owner Page error :', err.response);
-			});
-	}, []);
-
+	const userCard = tech.filter( item =>{ 
+		return item.user_id === Number(localStorage.getItem("id"))
+	})
+	
 	return (
 		<div>
             <div className='userInfo'>
-                <h2>Welcome {}</h2>
-                <p> Here are your {userData.length} items</p>
+				<h2>Welcome Friend!</h2>
+                <p> Here are your {userCard.length} items</p>
 
             </div>
             <div className='cardContainer'>
-                {userData.map((listing) => {
-				return <Card key={listing.item_id} card={listing} />;
+                {userCard.map((card) => {
+				return <Card key={card.item_id} card={card} />;
 			})}
 
             </div>
