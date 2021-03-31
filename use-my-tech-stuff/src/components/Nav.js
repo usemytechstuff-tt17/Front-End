@@ -11,10 +11,12 @@ import { UserContext } from '../contexts/userContext';
 
 const NavDiv = styled.div`
     display: flex;
-    border: 1px solid black;
+    /* border: 1px solid black; */
     justify-content: space-between;
     align-items: flex-end;
-    background-color: #C4C4C4;
+    /* background-color: #C4C4C4; */
+    background-color:#596C56; 
+    /* background-color:#116466; */
     p{
         text-align: bottom;
     }
