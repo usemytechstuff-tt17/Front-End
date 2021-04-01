@@ -6,7 +6,6 @@ import axios from 'axios';
 import { UserContext } from '../contexts/userContext';
 import { makeStyles } from '@material-ui/core/styles';
 
-
 const useStyles = makeStyles({
 	root: {
 	 display: 'flex',
@@ -48,7 +47,6 @@ export default function LoginForm() {
 	const [userValue, setUserValue] = useState(initialValue);
 	const { setLocalId , setIsLoggedIn} = useContext(UserContext);
 
-	
 	const handleChange = (evt) => {
 		const{name, value}=evt.target;
 		setUserValue({...userValue, [name]:value})
@@ -72,8 +70,6 @@ export default function LoginForm() {
 		evt.preventDefault();
 		submitLogin(userValue);
 	}
-	
-	
 	
 	return (
 		<div className={classes.root}>

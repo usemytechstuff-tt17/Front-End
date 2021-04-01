@@ -6,7 +6,6 @@ import styled from 'styled-components';
 import axiosWithAuth from '../utils/axiosWithAuth';
 import {TechContext} from '../contexts/techContext'
 
-
 const StyleDiv = styled.div`
 	background-color: white;
 	border: 1px solid white;
@@ -19,7 +18,6 @@ const StyleDiv = styled.div`
     padding:5%;
 `
 
-
 const initialFormValues = {
 	item_name: '',
 	item_price: '',
@@ -29,11 +27,7 @@ const initialFormValues = {
 const CreateListing = () => {
 	const [formValues, setFormValues] = useState(initialFormValues);
     const { tech, setTech } = useContext(TechContext);
-
-
 	const { push } = useHistory();
-
-
 
 	const onSubmit = (evt) => {
 		evt.preventDefault();
