@@ -3,7 +3,7 @@ import { useParams, useHistory } from 'react-router-dom';
 
 import axiosWithAuth from '../utils/axiosWithAuth';
 import { TechContext } from '../contexts/techContext';
-
+import '../App.css'
 const initialState= {
     item_name: '',
     item_price: '',
@@ -79,7 +79,7 @@ const EditPageForm = () => {
             <div className='edit-header'>
                 <h4>Editing: <strong>{editItem.item_name}</strong></h4>
             </div>
-            <label>Item Name
+            <label>Item Name<br/>
                 <input 
                 type= "text"
                 onChange={changeHandler}
@@ -96,7 +96,7 @@ const EditPageForm = () => {
                     <option value="other">Other</option>
                 </select>
             </label> */}
-            <label>Price
+            <label>Price<br/>
                 <input 
                 type= "text"
                 onChange={changeHandler}
@@ -104,7 +104,7 @@ const EditPageForm = () => {
                 name= "item_price"
                 />
             </label>
-            <label>Description
+            <label>Description<br/>
                 <input 
                 type= "text"
                 onChange={changeHandler}
