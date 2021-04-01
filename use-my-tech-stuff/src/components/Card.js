@@ -40,7 +40,7 @@ const StyleDiv = styled.div`
 	}
 	
 	.card{
-		display:flex
+		display:flex;
 		flex-flow: column;
 		align-items:flex-start;
 		justify-content:space-evenly;
