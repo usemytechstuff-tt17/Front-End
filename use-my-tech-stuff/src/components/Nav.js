@@ -51,6 +51,8 @@ const logout = () => {
     handleClose();
     setIsLoggedIn(false);
     setLocalId(false);
+    localStorage.removeItem('id')
+    localStorage.removeItem('token')
     push('/')
 }
 
