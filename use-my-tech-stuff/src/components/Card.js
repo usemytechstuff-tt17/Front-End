@@ -66,7 +66,7 @@ console.log(card)
 			<p>Price: {card.item_price}</p>
 			<p>Owner: {card.item_owner}</p>
 			<p>Available: {card.item_available ? 'Yes' : 'No'}</p>
-			<p> Email:{(Number(localId)!==card.user_id && isLoggedIn && <a href={`mailto:${card.owner_email}`}>{card.owner_email} </a>||'You may get an email because of this!')}</p>
+			{Number(localId)!==card.user_id&&<p> Email:{((Number(localId)!==card.user_id && isLoggedIn && <a href={`mailto:${card.owner_email}`}>{card.owner_email} </a>)||'Please log in.')}</p>}
 			{Number(localId)===card.user_id && isLoggedIn && (
 				<div className='ownerButtons'>
 					<Link to={`/editpage/${card.item_id}`}><Button color="primary" variant= "contained">edit</Button></Link> 
