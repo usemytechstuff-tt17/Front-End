@@ -120,11 +120,7 @@ const Card = (props) => {
 				<Button color="secondary" variant= "contained" onClick={handleDeleteClick}>delete</Button>
 			</div>
 		)}
-		{Number(localId)!==card.user_id && isLoggedIn && (
-			<div className='userButtons'>
-				<Button color="default" variant="outlined" disabled={card.item_available ? false : true}>add</Button>
-			</div>
-		)}
+		
 		</div>
 		<div className={`card ${isActive ? "hide": ""}`}>	
 			<div className="info">
@@ -133,10 +129,10 @@ const Card = (props) => {
 				<p>Available: {card.item_available ? 'Yes' : 'No'}</p>
 				<p>Owner: {card.item_owner}</p>
 				<p>Description:<br />{card.item_description}</p>
+        <p> Email:{(Number(localId)!==card.user_id && isLoggedIn && <a href={`mailto:${card.owner_email}`}>{card.owner_email} </a>||'You may get an email because of this!')}</p>
 			</div>
 		</div>
 	</StyleDiv>	
-	
 	);
 };
 
