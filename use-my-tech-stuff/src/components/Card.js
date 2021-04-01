@@ -1,4 +1,4 @@
-import React, { useContext } from 'react';
+import React, { useContext, useEffect, useState} from 'react';
 import { Link } from 'react-router-dom';
 
 import { UserContext } from '../contexts/userContext';
@@ -7,6 +7,7 @@ import styled from 'styled-components';
 import axiosWithAuth from '../utils/axiosWithAuth';
 
 import Button from '@material-ui/core/Button'
+import axios from 'axios';
 
 
 const StyleDiv = styled.div`
@@ -47,10 +48,22 @@ const Card = (props) => {
         })
     }
 
+	const [image,setImage] = useState('')
+	useEffect(() => {
+		axios.get('https://dog.ceo/api/breeds/image/random')
+		.then(res => {
+			setImage(res.data.message);
+		})
+		.catch(err => {
+			console.log(err)
+		})
+	},[])
+
+
 	return (
 		<StyleDiv className='card'>
 			{/* <img src='https://images.pexels.com/photos/3568520/pexels-photo-3568520.jpeg?auto=compress&cs=tinysrgb&h=750&w=1260'/> */}
-			<img src='https://picsum.photos/200'/>
+			<img src={image}/>
 			<h3>Item: {card.item_name}</h3>
 			<p>Price: {card.item_price}</p>
 			<p>Owner: {card.item_owner}</p>
