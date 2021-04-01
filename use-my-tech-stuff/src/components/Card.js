@@ -30,7 +30,7 @@ const StyleDiv = styled.div`
 		opacity:.8;
 	}
 	.card{
-		display:flex
+		display:flex;
 		flex-flow: column;
 		align-items:flex-start;
 		justify-content:space-evenly;

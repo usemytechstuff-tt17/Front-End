@@ -16,19 +16,18 @@ const StyleDiv = styled.div`
 		flex-flow: row wrap;
 		justify-content: space-evenly;
 		align-items: flex-end;
-	}
+	};
 	.banner{
 		position: relative;
 		margin: auto;
 		width: 100%;
-		margin-top: 5%
-	}
-	}
+		margin-top: 5%;
+	};
 	.banner img{
 		display: block;
 		position: relative;
 		width: 100%;
-	}
+	};
 	.joinBtn{
 		margin: 0;
 		position: absolute;
@@ -42,26 +41,26 @@ const StyleDiv = styled.div`
 		color:white;
 		background-color:black;
 		opacity:0;
-	}
+	};
 	.banner:hover{
 		.joinBtn{
 			opacity:1;
-		}
+		};
 		img{
 			-webkit-filter: blur(5px);
 			filter: blur(5px);
-		}
-	}	
+		};
+	};
 `
+
 const Home = () => {
 	const { tech } = useContext(TechContext);
-	console.log(tech);
 
 	return (
 		
 		<StyleDiv className='allCards'>
 			<div className="banner">
-				<img src={Banner} />
+				<img src={Banner} alt='banner' />
 				<Link to="/register"><button className="joinBtn">Come, Borrow My things!</button></Link>
 			</div>
 			<h1>You can find listings of anything!</h1>
