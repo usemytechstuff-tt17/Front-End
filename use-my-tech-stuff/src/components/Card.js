@@ -9,7 +9,6 @@ import axiosWithAuth from '../utils/axiosWithAuth';
 import Button from '@material-ui/core/Button'
 import axios from 'axios';
 
-
 const StyleDiv = styled.div`
 	border:1px solid black;
 	color:black;
@@ -41,7 +40,6 @@ const Card = (props) => {
         .delete(`/items/${card.item_id}`)
         .then(res => {
             deleteItem(res.data.item_id)
-            // push('/ownerpage')
         })
         .catch(err => {
             console.log({err})

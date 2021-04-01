@@ -10,12 +10,10 @@ const initialState= {
     item_description: '',
 };
 
-
 const EditPageForm = () => {
     const { goBack } = useHistory();
     const { id } = useParams();
     const { tech, setTech } = useContext(TechContext);
-
     const [editItem, setEditItem] = useState(initialState)
 
     // Populates the Edit Form fields with the item with id matching
@@ -29,7 +27,6 @@ const EditPageForm = () => {
             console.log(err.response)
         });
     }, [id]);
-
 
     // Updates both state and the server with the edits
     const handleSubmit = e => {
@@ -86,15 +83,6 @@ const EditPageForm = () => {
                 name= "item_name"
                 />
             </label>
-            {/* <label>Category
-                <select name="category" value={editItem.item_category} onChange={changeHandler}>
-                    <option value="">--Select Category--</option>
-                    <option value="photography">Film & Photography</option>
-                    <option value="television">TV's</option>
-                    <option value="electronics">Electronics</option>
-                    <option value="other">Other</option>
-                </select>
-            </label> */}
             <label>Price<br/>
                 <input 
                 type= "text"
@@ -115,8 +103,8 @@ const EditPageForm = () => {
                 <button>Save</button>
             </div>
         </form>
-                <button onClick={()=>goBack()}>Cancel</button>
-                <button onClick={handleDeleteClick} >Delete</button>
+        <button onClick={()=>goBack()}>Cancel</button>
+        <button onClick={handleDeleteClick} >Delete</button>
     </div>
     );
 };
