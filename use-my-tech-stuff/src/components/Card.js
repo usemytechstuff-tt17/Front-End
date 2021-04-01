@@ -129,10 +129,11 @@ const Card = (props) => {
 				<p>Available: {card.item_available ? 'Yes' : 'No'}</p>
 				<p>Owner: {card.item_owner}</p>
 				<p>Description:<br />{card.item_description}</p>
-        <p> Email:{(Number(localId)!==card.user_id && isLoggedIn && <a href={`mailto:${card.owner_email}`}>{card.owner_email} </a>||'You may get an email because of this!')}</p>
+        {Number(localId)!==card.user_id&&<p> Email:{((Number(localId)!==card.user_id && isLoggedIn && <a href={`mailto:${card.owner_email}`}>{card.owner_email} </a>)||'Please log in.')}</p>}
 			</div>
 		</div>
 	</StyleDiv>	
+
 	);
 };
 
