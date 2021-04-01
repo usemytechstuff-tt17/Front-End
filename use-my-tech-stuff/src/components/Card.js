@@ -57,7 +57,7 @@ const Card = (props) => {
 		})
 	},[])
 
-
+console.log(card)
 	return (
 		<StyleDiv className='card'>
 			{/* <img src='https://images.pexels.com/photos/3568520/pexels-photo-3568520.jpeg?auto=compress&cs=tinysrgb&h=750&w=1260'/> */}
@@ -66,15 +66,11 @@ const Card = (props) => {
 			<p>Price: {card.item_price}</p>
 			<p>Owner: {card.item_owner}</p>
 			<p>Available: {card.item_available ? 'Yes' : 'No'}</p>
+			<p> {(Number(localId)!==card.user_id && isLoggedIn &&Email: <a href={`mailto:${card.owner_email}`}>{card.owner_email} </a>||'Please Login')}</p>
 			{Number(localId)===card.user_id && isLoggedIn && (
 				<div className='ownerButtons'>
 					<Link to={`/editpage/${card.item_id}`}><Button color="primary" variant= "contained">edit</Button></Link> 
 					<Button color="secondary" variant= "contained" onClick={handleDeleteClick}>delete</Button>
-				</div>
-			)}
-			{Number(localId)!==card.user_id && isLoggedIn && (
-				<div className='userButtons'>
-					<Button color="default" variant="outlined" disabled={card.item_available ? false : true}>add</Button>
 				</div>
 			)}
 		</StyleDiv>
