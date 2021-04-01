@@ -31,14 +31,9 @@ const initialFormValues= {
     password: '',
 }
 
-
 export default function CreateUser() {
-
     const {push} = useHistory()
-    
     const [formValues, setFormValues] = useState(initialFormValues);
-
-
     const submitRegister = (value) => {
 
 		axios.post('https://usemytechstuff.herokuapp.com/api/users/register', value)
@@ -97,7 +92,5 @@ export default function CreateUser() {
     </form>
     </StyleDiv>
     )
-
-
 }
 

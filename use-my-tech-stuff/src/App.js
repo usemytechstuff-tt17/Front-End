@@ -21,7 +21,6 @@ function App() {
 	const [tech, setTech] = useState([]);
 	const [localId, setLocalId,isLoggedIn, setIsLoggedIn] = useId(false,false);
 
-
 	useEffect(() => {
 		axiosWithAuth()
 			.get('/items')
@@ -39,12 +38,9 @@ function App() {
 			<TechContext.Provider value={{ tech, setTech }}>
 				<UserContext.Provider value={{ isLoggedIn, setIsLoggedIn, setLocalId, localId }}>
 					<Nav />
-					{/* <h1>Use My Tech Stuff</h1> */}
 					<Switch>
-
 						<PrivateRoute  path='/editpage/:id' component={EditPageForm} />
 						<PrivateRoute  path='/ownerpage' component={OwnerPage} />
-
 						<Route path='/createlisting' component={CreateListing} />
 						<Route path='/login' component={LoginForm} />
 						<Route path='/register' component={Create} />

@@ -1,23 +1,18 @@
 import React, { useState, useContext } from 'react';
 import { Link, useHistory } from 'react-router-dom';
+
 import Menu from '@material-ui/core/Menu';
 import MenuItem from '@material-ui/core/MenuItem';
 import MenuIcon from '@material-ui/icons/Menu';
-// import Logo from '../theme/UseMyTechStuffLogo.png'
 import Logo from '../theme/NewLogo.png'
-// import PrivateRoute from '../utils/PrivateRoute'
 import styled from 'styled-components'
 import { Home } from "@material-ui/icons"
 import { UserContext } from '../contexts/userContext';
 
 const NavDiv = styled.div`
     display: flex;
-    /* border: 1px solid black; */
     justify-content: space-between;
     align-items: flex-end;
-    /* background-color: #C4C4C4; */
-    /* background-color:#596C56;  */
-    /* background-color:#116466; */
     background-color:#385898;
     p{
         text-align: bottom;
@@ -34,6 +29,7 @@ const NavDiv = styled.div`
 
 const Nav = () => {
 
+const {push} = useHistory()
 const [anchorEl, setAnchorEl] = useState(null);
 
 const handleClick = (event) => {
@@ -44,8 +40,6 @@ const handleClose = () => {
     setAnchorEl(null);
 };
 const { isLoggedIn, setIsLoggedIn, localId, setLocalId } = useContext(UserContext);
-
-const {push} = useHistory()
 
 const logout = () => {
     handleClose();
@@ -59,9 +53,7 @@ const logout = () => {
 return(
     <NavDiv className='navbar'>
         <Link className="link" to="/" ><Home style={{color:"black", fontSize: 50}} /></Link>
-
         <img src={Logo} alt='Use My Tech Stuff Logo' />
-        
         <nav>
             <MenuIcon onClick={handleClick} style={{ fontSize: 60 }}></MenuIcon>
             <Menu

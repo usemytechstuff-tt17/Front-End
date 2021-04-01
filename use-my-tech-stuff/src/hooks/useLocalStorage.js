@@ -1,7 +1,5 @@
 import  { useState } from "react"
 
-
-
 const useLocalStorage = (key,initialValue) => {
 
     const [value, setValue] = useState(() => {
@@ -19,7 +17,6 @@ const useLocalStorage = (key,initialValue) => {
         localStorage.setItem(key, value)
         }
     }
-
 
     return [value,setNewValue]
 }
