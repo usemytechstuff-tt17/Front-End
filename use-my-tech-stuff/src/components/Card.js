@@ -47,6 +47,8 @@ const StyleDiv = styled.div`
 	}
 	h1{
 		margin:0;
+		color:black;
+		text-transform:capitalize;
 	}
 	.info{
 		display:flex;
