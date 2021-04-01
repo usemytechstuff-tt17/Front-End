@@ -63,7 +63,7 @@ const Card = (props) => {
 	return (
 		<StyleDiv className='card'>
 			{/* <img src='https://images.pexels.com/photos/3568520/pexels-photo-3568520.jpeg?auto=compress&cs=tinysrgb&h=750&w=1260'/> */}
-			<img src={image}/>
+			<img src={image} alt={image}/>
 			<h3>Item: {card.item_name}</h3>
 			<p>Price: {card.item_price}</p>
 			<p>Owner: {card.item_owner}</p>
