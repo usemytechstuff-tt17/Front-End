@@ -17,18 +17,28 @@ const StyleDiv = styled.div`
 	flex-direction:column;
 	width:30rem;
 	margin: 10px 0;
-	border-radius:0 0 18px 18px;
-	box-shadow: -8px 8px #385898;
+	border-radius:18px;
+	/* box-shadow: -8px 8px #385898; */
 	background-color:white;
 	padding-bottom:2px;
 	position:relative;
-	img{
-		height:300px;
-		width:30rem;		
-	}
-	img:hover{
+	&:hover{
+		.info{
+			opacity:.7;
+		}
+		/* img{
 		opacity:.8;
+	} */
 	}
+	img{
+		/* height:300px; */
+		display:block;
+		max-height:300px;
+		position:relative;
+		width:100%;
+		border-radius:18px 18px 0 0;		
+	}
+	
 	.card{
 		display:flex
 		flex-flow: column;
@@ -45,7 +55,7 @@ const StyleDiv = styled.div`
 		margin:1%;
 		font-size:1rem;
 	}
-	h1{
+	.image h1{
 		margin:0;
 		color:black;
 		text-transform:capitalize;
@@ -60,14 +70,15 @@ const StyleDiv = styled.div`
 		left: 0;
 		z-index:10;
 		background-color:white;
+		opacity:0;
 
 	}
-	.hide{
+	/* .hide{
 		display:none;
-	}
+	} */
 	.is-blurred {
-  	filter: blur(2px);
-  	-webkit-filter: blur(2px);
+	filter: blur(2px);
+	-webkit-filter: blur(2px);
 	}
 `
 
@@ -128,7 +139,7 @@ const Card = (props) => {
 		</div>
 		<div className={`card ${isActive ? "hide": ""}`}>	
 			<div className="info">
-				<CloseIcon onClick={handleToggle}></CloseIcon>
+				{/* <CloseIcon onClick={handleToggle}></CloseIcon> */}
 				<p>Price: ${card.item_price}/Day</p>
 				<p>Available: {card.item_available ? 'Yes' : 'No'}</p>
 				<p>Owner: {card.item_owner}</p>
