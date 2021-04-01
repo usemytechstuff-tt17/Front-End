@@ -5,6 +5,7 @@ import {useHistory} from 'react-router-dom';
 import axios from 'axios';
 import { UserContext } from '../contexts/userContext';
 import { makeStyles } from '@material-ui/core/styles';
+import {Link} from 'react-router-dom'
 
 const useStyles = makeStyles({
 	root: {
@@ -36,7 +37,8 @@ const useStyles = makeStyles({
 	},
 	button:{
     backgroundColor:'#385898',
-	width:'10rem'
+	width:'10rem',
+	marginBottom:'2%',
 	}
   });
 
@@ -95,6 +97,9 @@ export default function LoginForm() {
 					variant="outlined"
 				/>
 		  <Button className={classes.button} type='submit' variant= "contained" >Log In</Button>
+		  <Link to='/Register'>
+		  <Button className={classes.button}>Register</Button>
+		  </Link>
 			</form>
 		</div>
 	);
