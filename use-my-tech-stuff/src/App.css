@@ -44,3 +44,23 @@ h1{
 html{
   background-color: black;;
 }
+.editPageContainer{
+  background-color: white;
+  display:flex;
+  flex-direction: column;
+  align-items: center;
+  width:30rem;
+  margin:auto; 
+  margin-top:5rem;
+  border-radius: 8px;
+  box-shadow: -5px 8px #596C56;
+}
+.editPageContainer form{
+  display:flex;
+  flex-direction: column;
+  align-items:flex-start;
+  justify-content: space-between;
+}
+.editPageContainer form button{
+  margin-left:5rem;
+}
