@@ -5,6 +5,10 @@ import styled from "styled-components"
 
 const StyleDiv = styled.div`
 	display:flex;
+	flex-flow: column;
+	.userInfo{
+		color: white;
+	}
 	.cardContainer{
 		display:flex;
 		flex-flow: row wrap;
