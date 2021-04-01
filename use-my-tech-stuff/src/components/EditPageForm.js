@@ -12,12 +12,11 @@ const initialState= {
 
 
 const EditPageForm = () => {
-    const { push,goBack } = useHistory();
+    const { goBack } = useHistory();
     const { id } = useParams();
     const { tech, setTech } = useContext(TechContext);
 
     const [editItem, setEditItem] = useState(initialState)
-    const handleBack = () => goBack()
 
     // Populates the Edit Form fields with the item with id matching
     useEffect(() => {
