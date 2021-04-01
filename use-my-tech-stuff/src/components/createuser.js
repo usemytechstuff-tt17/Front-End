@@ -16,7 +16,7 @@ const StyleDiv = styled.div`
     margin:auto;
     margin-top:5rem;
     border-radius: 8px;
-    box-shadow: -5px 8px #596C56;
+    box-shadow: -8px 8px #385898;
     input{
         margin:5px;
     }

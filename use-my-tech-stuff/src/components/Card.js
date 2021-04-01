@@ -17,8 +17,8 @@ const StyleDiv = styled.div`
 	flex-direction:column;
 	width:30rem;
 	margin: 10px 0;
-	border-radius:0 0 18px 18px;
-	box-shadow: -5px 8px #596C56;
+	border-radius:0 0 18px 0;
+	box-shadow: -8px 8px #385898;
 	background-color:white;
 	padding-bottom:2px;
 	img{

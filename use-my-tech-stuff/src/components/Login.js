@@ -15,7 +15,7 @@ const useStyles = makeStyles({
 	  background: 'white',
 	  borderRadius: '18px',
 	  color: 'white',
-	  boxShadow: '-5px 8px #596C56',
+	  boxShadow: '-8px 8px #385898',
 	  border:'1px solid black',
 	  width:'30rem',
 	  margin:'auto',
@@ -36,7 +36,7 @@ const useStyles = makeStyles({
 		padding:'10px',
 	},
 	button:{
-    backgroundColor:'#596C56',
+    backgroundColor:'#385898',
 	width:'10rem'
 	}
   });

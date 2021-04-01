@@ -16,8 +16,9 @@ const NavDiv = styled.div`
     justify-content: space-between;
     align-items: flex-end;
     /* background-color: #C4C4C4; */
-    background-color:#596C56; 
+    /* background-color:#596C56;  */
     /* background-color:#116466; */
+    background-color:#385898;
     p{
         text-align: bottom;
     }
