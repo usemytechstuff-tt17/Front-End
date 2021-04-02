@@ -43,7 +43,7 @@ const StyleDiv = styled.div`
 		justify-content:space-evenly;
 		font-weight:bold;
 		width: 100%;
-		height: 100%;
+		height: auto;
 		position: absolute;
 		top: 0;
 		left: 0;
