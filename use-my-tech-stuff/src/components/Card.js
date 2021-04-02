@@ -10,34 +10,30 @@ import Button from '@material-ui/core/Button';
 import axios from 'axios';
 
 const StyleDiv = styled.div`
-		border:1px solid black;
-		color:black;
-		display:flex;
-		flex-direction:column;
-		width:25%;
-		height:90%;
-		margin: 2% 3%;
-		border-radius:18px;
-		background-color:white;
-		padding-bottom:2px;
-		position:relative;
-	}
+	border:1px solid black;
+	color:black;
+	display:flex;
+	flex-direction:column;
+	width:25%;
+	height:90%;
+	margin: 2% 3%;
+	border-radius:18px;
+	background-color:white;
+	padding-bottom:2px;
+	position:relative;
+	};
 	&:hover{
 		.info{
 			opacity:.7;
-		}
-	}
+		};
+	};
 	img{
 		box-sizing:content-box;
 		object-fit: cover;
-		/* position:relative; */
-		/* overflow:hidden; */
 		width:100%;
 		border-radius:18px 18px 0 0;
 		height:300px;
-		/* max-height:300px;		 */
-	}
-	
+	};
 	.card{
 		display:flex;
 		flex-flow: column;
@@ -49,20 +45,20 @@ const StyleDiv = styled.div`
 		position: absolute;
 		top: 0;
 		left: 0;
-	}
+	};
 	.card p{
 		margin:1%;
 		font-size:1rem;
-	}
+	};
 	.image h1{
 		margin:0;
 		color:black;
 		text-transform:capitalize;
 		font-size:2vw;
-	}
+	};
 	.image{
 		height:100%;
-	}
+	};
 	.info{
 		display:flex;
 		flex-flow:column;
@@ -75,16 +71,16 @@ const StyleDiv = styled.div`
 		background-color:white;
 		opacity:0;
 		
-	}
+	};
 	@media (max-width:991px){
 		width:40%;
 		img{
 			height:250px;
-		}
-		/* .cards{
-			flex-flow:column;
-		} */
-	}
+		};
+		.image h1{
+		font-size:3vw;
+		};
+	};
 	@media (max-width:470px){
 		width:60%;
 		.cards{
@@ -92,11 +88,14 @@ const StyleDiv = styled.div`
 			align-items: center;
 			justify-content: center;
 			flex-wrap: nowrap;
-		}
+		};
 		img{
 			height:200px;
-		}
-	}
+		};
+		.image h1{
+		font-size:4vw;
+		};
+	};
 `
 
 const Card = (props) => {

@@ -6,6 +6,9 @@ const StyleSearchBar = styled.input`
     width:20%;
     padding:1%;
     margin:2%;
+    @media(max-width:991px){
+        width:40%;
+    }
 `
 
 
