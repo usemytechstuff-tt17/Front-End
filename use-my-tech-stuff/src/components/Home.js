@@ -64,7 +64,7 @@ const Home = () => {
 			<div className="banner">
 				<img src={Banner} alt='banner' />
 				{ !isLoggedIn && !localId &&
-				<Link to="/register"><button className="joinBtn">Come, Borrow My things!</button></Link>}
+				<Link to="/login"><button className="joinBtn">Come, Borrow My things!</button></Link>}
 			</div>
 			<h1>You can find listings of anything!</h1>
 			<div className="cards">

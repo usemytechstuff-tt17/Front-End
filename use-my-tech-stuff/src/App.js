@@ -13,6 +13,7 @@ import CreateListing from './components/CreateListing';
 
 import './App.css';
 import PrivateRoute from './utils/PrivateRoute';
+import HiddenRoute from './utils/HiddenRoute';
 import axiosWithAuth from './utils/axiosWithAuth';
 import useId from './hooks/useId';
 
@@ -41,9 +42,9 @@ function App() {
 					<Switch>
 						<PrivateRoute  path='/editpage/:id' component={EditPageForm} />
 						<PrivateRoute  path='/ownerpage' component={OwnerPage} />
-						<Route path='/createlisting' component={CreateListing} />
-						<Route path='/login' component={LoginForm} />
-						<Route path='/register' component={Create} />
+						<PrivateRoute path='/createlisting' component={CreateListing} />
+						<HiddenRoute path='/login' component={LoginForm} />
+						<HiddenRoute path='/register' component={Create} />
 						<Route path='/' component={Home} />
 					</Switch>
 				</UserContext.Provider>
