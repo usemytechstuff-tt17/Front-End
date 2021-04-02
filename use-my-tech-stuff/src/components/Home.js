@@ -36,7 +36,6 @@ const StyleDiv = styled.div`
 		-ms-transform: translate(-50%, -50%);
 		transform: translate(-50%, -50%);
 		font-size:4vw;
-		/* width:50%; */
 		border-radius:8px;
 		border: 1px solid white;
 		color:white;
