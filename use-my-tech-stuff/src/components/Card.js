@@ -135,7 +135,6 @@ const Card = (props) => {
 		</div>
 		<div className={`card ${isActive ? "hide": ""}`}>	
 			<div className="info">
-				{/* <CloseIcon onClick={handleToggle}></CloseIcon> */}
 				<p>Price: ${card.item_price}/Day</p>
 				<p>Available: {card.item_available ? 'Yes' : 'No'}</p>
 				<p>Owner: {card.item_owner}</p>
