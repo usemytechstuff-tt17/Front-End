@@ -1,6 +1,7 @@
 import React, { useContext } from 'react';
 import {Link} from 'react-router-dom'
 
+import {UserContext} from '../contexts/userContext'
 import { TechContext } from '../contexts/techContext';
 import Card from './Card';
 import styled from 'styled-components'
@@ -55,13 +56,15 @@ const StyleDiv = styled.div`
 
 const Home = () => {
 	const { tech } = useContext(TechContext);
+	const { isLoggedIn, localId } = useContext(UserContext);
 
 	return (
 		
 		<StyleDiv className='allCards'>
 			<div className="banner">
 				<img src={Banner} alt='banner' />
-				<Link to="/register"><button className="joinBtn">Come, Borrow My things!</button></Link>
+				{ !isLoggedIn && !localId &&
+				<Link to="/register"><button className="joinBtn">Come, Borrow My things!</button></Link>}
 			</div>
 			<h1>You can find listings of anything!</h1>
 			<div className="cards">

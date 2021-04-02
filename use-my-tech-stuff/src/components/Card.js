@@ -7,7 +7,6 @@ import styled from 'styled-components';
 import axiosWithAuth from '../utils/axiosWithAuth';
 
 import Button from '@material-ui/core/Button';
-import CloseIcon from '@material-ui/icons/Close';
 import axios from 'axios';
 
 const StyleDiv = styled.div`
@@ -15,10 +14,10 @@ const StyleDiv = styled.div`
 	color:black;
 	display:flex;
 	flex-direction:column;
-	width:30rem;
-	margin: 10px 0;
+	width:25%;
+	height:90%;
+	margin: 2% 3%;
 	border-radius:18px;
-	/* box-shadow: -8px 8px #385898; */
 	background-color:white;
 	padding-bottom:2px;
 	position:relative;
@@ -26,17 +25,15 @@ const StyleDiv = styled.div`
 		.info{
 			opacity:.7;
 		}
-		/* img{
-		opacity:.8;
-	} */
 	}
 	img{
-		/* height:300px; */
-		display:block;
-		max-height:300px;
-		position:relative;
+		box-sizing:content-box;
+		/* object-fit: cover; */
+		/* position:relative; */
+		/* overflow:hidden; */
 		width:100%;
-		border-radius:18px 18px 0 0;		
+		border-radius:18px 18px 0 0;
+		max-height:300px;		
 	}
 	
 	.card{
@@ -64,21 +61,17 @@ const StyleDiv = styled.div`
 		display:flex;
 		flex-flow:column;
 		margin-top:15%;
-		width: auto;
+		width: 100%;
 		height: auto;
 		top: 0;
 		left: 0;
 		z-index:10;
 		background-color:white;
 		opacity:0;
-
+		
 	}
-	/* .hide{
-		display:none;
-	} */
-	.is-blurred {
-	filter: blur(2px);
-	-webkit-filter: blur(2px);
+	.image{
+		height:100%;
 	}
 `
 
@@ -86,7 +79,7 @@ const Card = (props) => {
 	const { isLoggedIn, localId } = useContext(UserContext);
 	const { tech, setTech } = useContext(TechContext);
 	const { card } = props;
-	const [isActive, setActive] = useState("false")
+	
 
 	const deleteItem = id => {  //Deletes item off of local state
         setTech(tech.filter(item =>item.item_id !== Number(id)))
@@ -115,15 +108,13 @@ const Card = (props) => {
 		})
 	},[])
 
-	const handleToggle = () => {
-		setActive(!isActive);
-	};
+	
 
 	return (
 	
 	<StyleDiv>
-		<div className={`image ${isActive ? "":"is-blurred" }`}>
-		<img src={image} alt={image} onClick={handleToggle}/>
+		<div className="image">
+		<img src={image} alt={image}/>
 		<h1>{card.item_name}</h1>
 		{Number(localId)===card.user_id && isLoggedIn && (
 			<div className='ownerButtons'>
@@ -133,7 +124,7 @@ const Card = (props) => {
 		)}
 		
 		</div>
-		<div className={`card ${isActive ? "hide": ""}`}>	
+		<div className="card">	
 			<div className="info">
 				<p>Price: ${card.item_price}/Day</p>
 				<p>Available: {card.item_available ? 'Yes' : 'No'}</p>

@@ -11,3 +11,8 @@ code {
   font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
     monospace;
 }
+@media (max-width:1040px){
+  .cards{
+    flex-flow:column;
+  }
+}
