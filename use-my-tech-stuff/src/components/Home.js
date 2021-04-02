@@ -6,6 +6,7 @@ import { TechContext } from '../contexts/techContext';
 import Card from './Card';
 import styled from 'styled-components'
 import Banner from '../theme/Banner.jpeg'
+import SearchBar from './SearchBar';
 
 const StyleDiv = styled.div`
 	margin:0;
@@ -67,6 +68,7 @@ const Home = () => {
 				<Link to="/login"><button className="joinBtn">Come, Borrow My things!</button></Link>}
 			</div>
 			<h1>You can find listings of anything!</h1>
+			<SearchBar/>
 			<div className="cards">
 			{tech.map((card) => (
 				<Card key={card.item_id} card={card} />
