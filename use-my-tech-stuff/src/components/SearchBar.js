@@ -7,7 +7,7 @@ const StyleSearchBar = styled.input`
     padding:1%;
     margin:2%;
     @media(max-width:991px){
-        width:40%;
+        width:60%;
     }
 `
 
