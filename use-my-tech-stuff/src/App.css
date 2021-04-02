@@ -64,3 +64,9 @@ html{
 .editPageContainer form button{
   margin-left:5rem;
 }
+
+@media (max-width:1040px){
+  .cards{
+    flex-direction:column;
+  }
+}
