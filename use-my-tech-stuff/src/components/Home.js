@@ -12,12 +12,11 @@ const StyleDiv = styled.div`
 	margin:0;
 	h1{
 		color: white;
-	}
+	};
 	.cards{
 		display:flex;
 		flex-wrap: wrap;
 		justify-content: space-evenly;
-		/* align-items: flex-end; */
 	};
 	.banner{
 		position: relative;
@@ -42,16 +41,14 @@ const StyleDiv = styled.div`
 		border: 1px solid white;
 		color:white;
 		background-color:black;
-		opacity:0;
+		opacity:1;
 	};
-	.banner:hover{
-		.joinBtn{
-			opacity:1;
-		};
-		img{
-			-webkit-filter: blur(5px);
-			filter: blur(5px);
-		};
+	.joinBtn:hover{
+		border:1px solid green;
+		color:black;
+		font-weight:bold;
+		-webkit-text-stroke: 2px white;
+		background:url('https://images.pexels.com/photos/1625878/pexels-photo-1625878.jpeg?auto=compress&cs=tinysrgb&h=750&w=1260');
 	};
 `
 
