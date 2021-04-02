@@ -122,12 +122,14 @@ const Card = (props) => {
 
 	const [image,setImage] = useState('')
 	useEffect(() => {
-		axios.get('https://dog.ceo/api/breeds/image/random')
+		const random = Math.floor((Math.random()*90)+10)
+		axios.get(`https://picsum.photos/8${random}`)
 		.then(res => {
-			setImage(res.data.message);
+			console.log(res.config.url)
+			setImage(res.config.url);
 		})
 		.catch(err => {
-			console.log(err)
+			console.log(err.response)
 		})
 	},[])
 
@@ -153,7 +155,7 @@ const Card = (props) => {
 				<p>Available: {card.item_available ? 'Yes' : 'No'}</p>
 				<p>Owner: {card.item_owner}</p>
 				<p>Description:<br />{card.item_description}</p>
-        		{Number(localId)!==card.user_id&&<p> Email:{((Number(localId)!==card.user_id && isLoggedIn && <a href={`mailto:${card.owner_email}`}>{card.owner_email} </a>)||'Please log in.')}</p>}
+        		{Number(localId)!==card.user_id&&<p> Email: {((Number(localId)!==card.user_id && isLoggedIn && <a href={`mailto:${card.owner_email}`}>{card.owner_email} </a>)||'Please log in.')}</p>}
 			</div>
 		</div>
 	</StyleDiv>	
