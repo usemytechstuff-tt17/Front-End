@@ -15,9 +15,9 @@ const StyleDiv = styled.div`
 	}
 	.cards{
 		display:flex;
-		flex-flow: row wrap;
+		flex-wrap: wrap;
 		justify-content: space-evenly;
-		align-items: flex-end;
+		/* align-items: flex-end; */
 	};
 	.banner{
 		position: relative;

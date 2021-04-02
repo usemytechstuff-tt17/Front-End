@@ -10,17 +10,18 @@ import Button from '@material-ui/core/Button';
 import axios from 'axios';
 
 const StyleDiv = styled.div`
-	border:1px solid black;
-	color:black;
-	display:flex;
-	flex-direction:column;
-	width:25%;
-	height:90%;
-	margin: 2% 3%;
-	border-radius:18px;
-	background-color:white;
-	padding-bottom:2px;
-	position:relative;
+		border:1px solid black;
+		color:black;
+		display:flex;
+		flex-direction:column;
+		width:25%;
+		height:90%;
+		margin: 2% 3%;
+		border-radius:18px;
+		background-color:white;
+		padding-bottom:2px;
+		position:relative;
+	}
 	&:hover{
 		.info{
 			opacity:.7;
@@ -28,12 +29,13 @@ const StyleDiv = styled.div`
 	}
 	img{
 		box-sizing:content-box;
-		/* object-fit: cover; */
+		object-fit: cover;
 		/* position:relative; */
 		/* overflow:hidden; */
 		width:100%;
 		border-radius:18px 18px 0 0;
-		max-height:300px;		
+		height:300px;
+		/* max-height:300px;		 */
 	}
 	
 	.card{
@@ -56,6 +58,10 @@ const StyleDiv = styled.div`
 		margin:0;
 		color:black;
 		text-transform:capitalize;
+		font-size:2vw;
+	}
+	.image{
+		height:100%;
 	}
 	.info{
 		display:flex;
@@ -70,8 +76,26 @@ const StyleDiv = styled.div`
 		opacity:0;
 		
 	}
-	.image{
-		height:100%;
+	@media (max-width:991px){
+		width:40%;
+		img{
+			height:250px;
+		}
+		/* .cards{
+			flex-flow:column;
+		} */
+	}
+	@media (max-width:470px){
+		width:60%;
+		.cards{
+			flex-direction:column;
+			align-items: center;
+			justify-content: center;
+			flex-wrap: nowrap;
+		}
+		img{
+			height:200px;
+		}
 	}
 `
 
@@ -112,29 +136,28 @@ const Card = (props) => {
 
 	return (
 	
-	<StyleDiv>
+	<StyleDiv >
 		<div className="image">
-		<img src={image} alt={image}/>
-		<h1>{card.item_name}</h1>
-		{Number(localId)===card.user_id && isLoggedIn && (
-			<div className='ownerButtons'>
-				<Link to={`/editpage/${card.item_id}`}><Button color="primary" variant= "contained">edit</Button></Link> 
-				<Button color="secondary" variant= "contained" onClick={handleDeleteClick}>delete</Button>
-			</div>
-		)}
-		
+			<img src={image} alt={image}/>
+			<h1>{card.item_name}</h1>
+			{Number(localId)===card.user_id && isLoggedIn && (
+				<div className='ownerButtons'>
+					<Link to={`/editpage/${card.item_id}`}><Button color="primary" variant= "contained">edit</Button></Link> 
+					<Button color="secondary" variant= "contained" onClick={handleDeleteClick}>delete</Button>
+				</div>
+			)}
 		</div>
+
 		<div className="card">	
 			<div className="info">
 				<p>Price: ${card.item_price}/Day</p>
 				<p>Available: {card.item_available ? 'Yes' : 'No'}</p>
 				<p>Owner: {card.item_owner}</p>
 				<p>Description:<br />{card.item_description}</p>
-        {Number(localId)!==card.user_id&&<p> Email:{((Number(localId)!==card.user_id && isLoggedIn && <a href={`mailto:${card.owner_email}`}>{card.owner_email} </a>)||'Please log in.')}</p>}
+        		{Number(localId)!==card.user_id&&<p> Email:{((Number(localId)!==card.user_id && isLoggedIn && <a href={`mailto:${card.owner_email}`}>{card.owner_email} </a>)||'Please log in.')}</p>}
 			</div>
 		</div>
 	</StyleDiv>	
-
 	);
 };
 
