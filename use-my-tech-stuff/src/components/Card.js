@@ -18,6 +18,7 @@ const StyleDiv = styled.div`
 	width:30rem;
 	margin: 10px 0;
 	border-radius:18px;
+	/* box-shadow: -8px 8px #385898; */
 	background-color:white;
 	padding-bottom:2px;
 	position:relative;
@@ -25,8 +26,12 @@ const StyleDiv = styled.div`
 		.info{
 			opacity:.7;
 		}
+		/* img{
+		opacity:.8;
+	} */
 	}
 	img{
+		/* height:300px; */
 		display:block;
 		max-height:300px;
 		position:relative;
@@ -65,8 +70,15 @@ const StyleDiv = styled.div`
 		left: 0;
 		z-index:10;
 		background-color:white;
-		opacity:1;
-		
+		opacity:0;
+
+	}
+	/* .hide{
+		display:none;
+	} */
+	.is-blurred {
+	filter: blur(2px);
+	-webkit-filter: blur(2px);
 	}
 `
 
@@ -110,7 +122,7 @@ const Card = (props) => {
 	return (
 	
 	<StyleDiv>
-		<div className="image">
+		<div className={`image ${isActive ? "":"is-blurred" }`}>
 		<img src={image} alt={image} onClick={handleToggle}/>
 		<h1>{card.item_name}</h1>
 		{Number(localId)===card.user_id && isLoggedIn && (
@@ -119,22 +131,19 @@ const Card = (props) => {
 				<Button color="secondary" variant= "contained" onClick={handleDeleteClick}>delete</Button>
 			</div>
 		)}
-		{Number(localId)!==card.user_id && isLoggedIn && (
-			<div className='userButtons'>
-				<Button color="default" variant="outlined" disabled={card.item_available ? false : true}>add</Button>
-			</div>
-		)}
+		
 		</div>
-		<div className="card">	
+		<div className={`card ${isActive ? "hide": ""}`}>	
 			<div className="info">
 				<p>Price: ${card.item_price}/Day</p>
 				<p>Available: {card.item_available ? 'Yes' : 'No'}</p>
 				<p>Owner: {card.item_owner}</p>
 				<p>Description:<br />{card.item_description}</p>
+        {Number(localId)!==card.user_id&&<p> Email:{((Number(localId)!==card.user_id && isLoggedIn && <a href={`mailto:${card.owner_email}`}>{card.owner_email} </a>)||'Please log in.')}</p>}
 			</div>
 		</div>
 	</StyleDiv>	
-	
+
 	);
 };
 
