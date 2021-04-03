@@ -21,22 +21,24 @@ function App() {
 
 	const [tech, setTech] = useState([]);
 	const [localId, setLocalId,isLoggedIn, setIsLoggedIn] = useId(false,false);
+	const [isLoading, setIsLoading] = useState(true);
 
 	useEffect(() => {
-		axiosWithAuth()
+ 		axiosWithAuth()
 			.get('/items')
 			.then((res) => {
 				setTech(res.data);
+				setIsLoading(false)
 			})
 			.catch((err) => {
 				console.log(err);
 			});
-	}, []);
+	}, [isLoading]);
 
 	return (
 		<div className='app'>
 			<TechContext.Provider value={{ tech, setTech }}>
-				<UserContext.Provider value={{ isLoggedIn, setIsLoggedIn, setLocalId, localId }}>
+				<UserContext.Provider value={{ isLoggedIn, setIsLoggedIn, setLocalId, localId, isLoading }}>
 					<Nav />
 					<Switch>
 						<PrivateRoute  path='/editpage/:id' component={EditPageForm} />
