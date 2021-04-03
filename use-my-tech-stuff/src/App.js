@@ -28,7 +28,6 @@ function App() {
 			.get('/items')
 			.then((res) => {
 				setTech(res.data);
-				console.log(res.data)
 				setIsLoading(false)
 			})
 			.catch((err) => {
