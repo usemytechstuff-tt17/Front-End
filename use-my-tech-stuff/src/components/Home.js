@@ -7,6 +7,8 @@ import Card from './Card';
 import styled from 'styled-components'
 import Banner from '../theme/Banner.jpeg'
 import SearchBar from './SearchBar';
+import CircularProgress from '@material-ui/core/CircularProgress';
+
 
 const StyleDiv = styled.div`
 	margin:0;
@@ -54,7 +56,7 @@ const StyleDiv = styled.div`
 
 const Home = () => {
 	const { tech } = useContext(TechContext);
-	const { isLoggedIn, localId } = useContext(UserContext);
+	const { isLoggedIn, localId , isLoading} = useContext(UserContext);
 
 	return (
 		
@@ -66,13 +68,19 @@ const Home = () => {
 			</div>
 			<h1>You can find listings of anything!</h1>
 			<SearchBar/>
-			<div className="cards">
+			{ isLoading && <div>
+				<h3 style={{color:'white'}}>Loading...</h3>
+				<CircularProgress/>
+				</div>}
+			{ !isLoading && <div className="cards">
 			{tech.map((card) => (
 				<Card key={card.item_id} card={card} />
 			))}
-			</div>
+			</div>}
 		</StyleDiv>
 	);
 };
 
 export default Home;
+
+
