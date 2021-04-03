@@ -21,7 +21,6 @@ const StyleDiv = styled.div`
 	background-color:white;
 	padding-bottom:2px;
 	position:relative;
-	};
 	&:hover{
 		.info{
 			opacity:.7;
