@@ -8,6 +8,7 @@ const initialState= {
     item_name: '',
     item_price: '',
     item_description: '',
+    item_available:''
 };
 
 const EditPageForm = () => {
@@ -21,7 +22,7 @@ const EditPageForm = () => {
         axiosWithAuth()
         .get(`/items/${id}`)
         .then(res => {
-            setEditItem(res.data)
+            setEditItem(res.data);
         })
         .catch(err => {
             console.log(err.response)
@@ -99,6 +100,23 @@ const EditPageForm = () => {
                 name= "item_description"
                 />
             </label>
+            <p>Is it available?</p>
+                <label for='item_yes'>Yes</label>
+                <input 
+                type= "radio"
+                id='item_yes'
+                onChange={changeHandler}
+                value= {true}
+                name= "item_available"
+                />
+                <label for='item_no'>No</label>
+                <input 
+                type= "radio"
+                id='item_no'
+                onChange={changeHandler}
+                value= {false}
+                name= "item_available"
+                />
             <div className='buttonContainer'>
                 <button>Save</button>
             </div>

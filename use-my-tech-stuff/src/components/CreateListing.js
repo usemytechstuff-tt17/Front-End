@@ -22,6 +22,7 @@ const initialFormValues = {
 	item_name: '',
 	item_price: '',
 	item_description: '',
+    item_available:''
 };
 
 const CreateListing = () => {
@@ -94,6 +95,23 @@ const CreateListing = () => {
 						required
 					/>
 				</label>
+				<p style={{color:'black'}} >Is it available?</p>
+                <label style={{color:'black'}}  for='item_yes'>Yes</label>
+                <input 
+                type= "radio"
+                id='item_yes'
+                onChange={onChange}
+                value= {true}
+                name= "item_available"
+                />
+                <label style={{color:'black'}} for='item_no'>No</label>
+                <input 
+                type= "radio"
+                id='item_no'
+                onChange={onChange}
+                value= {false}
+                name= "item_available"
+                />
 				<br />
 				<Button variant='contained' type='submit'>
 					Submit
